@@ -5,6 +5,7 @@ defmodule Balance.GoalTest do
   describe "GoalSettings" do
     alias Balance.Goal
     @valid_attrs %{level: "A", goals: 5, team: "all"}
+    @valid_attrs_c %{level: "Cuauh", goals: 20, team: "all"}
     @update_attrs %{level: "B", goals: 10, team: "rojo"}
     @invalid_level %{level: "X", goals: 0, team: "all"}
     @invalid_goal %{level: "C", team: "all"}
@@ -19,6 +20,11 @@ defmodule Balance.GoalTest do
 
     test "Save valid goal" do
       goal = save_goal(@valid_attrs, true)
+      assert {:ok, %Goal{}} = goal
+    end
+
+    test "Save valid goal for Cuauh" do
+      goal = save_goal(@valid_attrs_c, true)
       assert {:ok, %Goal{}} = goal
     end
 

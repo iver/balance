@@ -13,6 +13,7 @@ defmodule Balance.Bonus do
     bonus
     |> cast(params, [:percent, :kind])
     |> validate_kind()
+    |> validate_number(:percent, greater_than: 0)
   end
 
   @doc """

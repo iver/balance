@@ -6,7 +6,8 @@ defmodule Balance.BonusTest do
     alias Balance.Bonus
     @valid_attrs %{percent: 1, kind: "individual"}
     @update_attrs %{percent: 0.5, kind: "team"}
-    @invalid_attrs %{percent: -1, kind: "other kind"}
+    @invalid_percent %{percent: -1, kind: "individual"}
+    @invalid_kind %{percent: 120, kind: "other kind"}
 
     def save_bonus(attrs, isValid) do
       bonus = Bonus.changeset(%Bonus{}, attrs)
@@ -19,10 +20,20 @@ defmodule Balance.BonusTest do
       assert {:ok, %Bonus{}} = bonus
     end
 
-    test "Save invalid bonus" do
-      bonus = save_bonus(@invalid_attrs, false)
+    test "Save invalid bonus kind" do
+      bonus = save_bonus(@invalid_kind, false)
       assert {:error, result} = bonus
       assert result.errors[:kind] == {"invalid kind name", []}
+    end
+
+    @tag :percent
+    test "Save invalid bonus percent" do
+      bonus = save_bonus(@invalid_percent, false)
+      assert {:error, result} = bonus
+
+      assert result.errors[:percent] ==
+               {"must be greater than %{number}",
+                [validation: :number, kind: :greater_than, number: 0]}
     end
 
     test "Update valid bonus" do

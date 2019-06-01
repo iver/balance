@@ -5,13 +5,13 @@ defmodule Balance.Bond do
   @kinds_names ["team", "individual"]
 
   schema "bonus_settings" do
-    field :percent, :float, default: 0.5
-    field :kind, :string, default: "team"
+    field(:percent, :float, default: 0.5)
+    field(:kind, :string, default: "team")
   end
 
   def changeset(struct, params) do
     struct
-    |> cast(params)
+    |> cast(params, [:percent, :kind])
     |> validate_kind()
   end
 

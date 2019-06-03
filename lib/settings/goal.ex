@@ -1,4 +1,4 @@
-defmodule Balance.Settings.Goal do
+defmodule Settings.Goal do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -23,9 +23,9 @@ defmodule Balance.Settings.Goal do
 
   ## Examples
 
-     iex> change = Balance.Settings.Goal.changeset(%Balance.Settings.Goal{}, %{level: "B", goals: 7, team: "all"})
-     iex> Balance.Settings.Goal.validate_level(change)
-     #Ecto.Changeset<action: nil, changes: %{goals: 7, level: \"B\"}, errors: [], data: #Balance.Settings.Goal<>, valid?: true>
+     iex> change = Settings.Goal.changeset(%Settings.Goal{}, %{level: "B", goals: 7, team: "all"})
+     iex> Settings.Goal.validate_level(change)
+     #Ecto.Changeset<action: nil, changes: %{goals: 7, level: \"B\"}, errors: [], data: #Settings.Goal<>, valid?: true>
 
   """
   def validate_level(changeset) do

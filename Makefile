@@ -25,6 +25,10 @@ init:
 debug:
 	iex -S mix
 
+test: MIX_ENV=test
+test:
+	mix test
+
 compile: clean
 	mix deps.get
 	mix deps.compile

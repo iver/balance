@@ -1,4 +1,4 @@
-defmodule Balance.Bonus do
+defmodule Balance.Settings.Bonus do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -21,13 +21,13 @@ defmodule Balance.Bonus do
 
   ## Examples
 
-     iex> change = Balance.Bonus.changeset(%Balance.Bonus{}, %{percent: 1, kind: "team"})
-     iex> Balance.Bonus.validate_kind(change)
-     #Ecto.Changeset<action: nil, changes: %{percent: 1.0}, errors: [], data: #Balance.Bonus<>, valid?: true>
+     iex> change = Balance.Settings.Bonus.changeset(%Balance.Settings.Bonus{}, %{percent: 1, kind: "team"})
+     iex> Balance.Settings.Bonus.validate_kind(change)
+     #Ecto.Changeset<action: nil, changes: %{percent: 1.0}, errors: [], data: #Balance.Settings.Bonus<>, valid?: true>
 
-     iex> change = Balance.Bonus.changeset(%Balance.Bonus{}, %{percent: 1, kind: "invalid team"})
-     iex> Balance.Bonus.validate_kind(change)
-     #Ecto.Changeset<action: nil, changes: %{kind: \"invalid team\", percent: 1.0}, errors: [kind: {\"invalid kind name\", []}, kind: {\"invalid kind name\", []}], data: #Balance.Bonus<>, valid?: false>
+     iex> change = Balance.Settings.Bonus.changeset(%Balance.Settings.Bonus{}, %{percent: 1, kind: "invalid team"})
+     iex> Balance.Settings.Bonus.validate_kind(change)
+     #Ecto.Changeset<action: nil, changes: %{kind: \"invalid team\", percent: 1.0}, errors: [kind: {\"invalid kind name\", []}, kind: {\"invalid kind name\", []}], data: #Balance.Settings.Bonus<>, valid?: false>
 
   """
   def validate_kind(changeset) do

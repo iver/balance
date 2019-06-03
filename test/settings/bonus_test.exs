@@ -1,9 +1,9 @@
-defmodule Balance.BonusTest do
+defmodule Balance.Settings.BonusTest do
   use ExUnit.Case
-  doctest Balance.Bonus
+  doctest Balance.Settings.Bonus
 
   describe "BonusSettings" do
-    alias Balance.Bonus
+    alias Balance.Settings.Bonus
     @valid_attrs %{percent: 1, kind: "individual"}
     @update_attrs %{percent: 0.5, kind: "team"}
     @invalid_percent %{percent: -1, kind: "individual"}

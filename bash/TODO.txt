@@ -1,0 +1,17 @@
+Scripts por generar para completar la Integración Continua:
+
+ [√]  config.sh         : Variables de entorno a configurar (se usan en los scripts de bash)
+ [ ]  deploy.sh         : Lógica para envío de archivos al servidor
+ [ ]  deploy_test.sh    : Pruebas unitarias del script de despliegue
+ [√]  publish.sh        : Lógica de despliegue en el servidor
+ [√]  publish_test.sh   : Pruebas unitarias del script de publicacón en el servidor
+ [ ]  install.sh        : Instala las dependencias del proyecto
+ [ ]  install_test.sh   : Prueba el script de instalación de dependencias
+ [√]  version.sh        : Obtiene la versión del proyecto a partir del último commit de git
+ [√]  version_test.sh   : Prueba el script de version.sh
+
+Estatus:
+
+  [√] Hecho!
+  [-] En progreso
+  [ ] No existe, por hacer.

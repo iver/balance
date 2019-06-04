@@ -1,17 +1,14 @@
-defmodule Json.Bonus do
+defmodule Json.Parser do
   @moduledoc """
   Allows to parse bonus json to struct easily
   """
-
-  @derive [Poison.Encoder]
-  defstruct [:percent, :kind]
 
   @doc """
   Decode JSON to a value, raises an exception on error.
 
   ## Example
 
-     iex> Json.Bonus.decode!(~s({"percent": 0.5, "kind": "individual"}))
+     iex> Json.Parser.decode!(~s({"percent": 0.5, "kind": "individual"}), %Settings.Bonus{})
      %Settings.Bonus{
      id: nil,
      kind: \"individual\",
@@ -19,8 +16,8 @@ defmodule Json.Bonus do
      }
 
   """
-  def decode!(params) do
-    Poison.decode!(params, as: %Settings.Bonus{})
+  def decode!(params, %_{} = value) do
+    Poison.decode!(params, as: value)
   end
 
   @doc """

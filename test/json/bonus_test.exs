@@ -3,16 +3,32 @@ defmodule Json.BonusTest do
   doctest Json.Parser
 
   describe "Json Bonus" do
-    @valid_json ~s({"percent": 0.5, "kind": "individual"})
+    @bonus_json ~s({"percent": 0.5, "kind": "individual"})
+    @goal_json ~s({\"level\": \"C\", \"goals\": 15, \"team\": \"all\"})
 
-    test "Decode valid json" do
-      bonus = Json.Parser.decode!(@valid_json, %Settings.Bonus{})
-      assert %Settings.Bonus{} = bonus
+    test "Decode valid json to Bonus data type" do
+      setting = Json.Parser.decode!(@bonus_json, %Settings.Bonus{})
+      assert %Settings.Bonus{} = setting
+      assert setting.percent == 0.5
+      assert setting.kind == "individual"
+    end
+
+    test "Decode valid json to Goal data type" do
+      setting = Json.Parser.decode!(@goal_json, %Settings.Goal{})
+      assert %Settings.Goal{} = setting
+      assert setting.level == "C"
+      assert setting.goals == 15
+      assert setting.team == "all"
+    end
+
+    test "Error decoding wrong data" do
+      {:error, result} = Json.Parser.decode!(@bonus_json, %{percent: 20, kind: "individual"})
+      assert "Decode for value type is not implemented" = result
     end
 
     test "Encode valid struct" do
       bonus = %Settings.Bonus{percent: 0.3, kind: "team"}
-      json = Json.Parser.encode(bonus)
+      {:ok, json} = Json.Parser.encode(bonus)
       assert "{\"percent\":0.3,\"kind\":\"team\"}" == json
     end
   end

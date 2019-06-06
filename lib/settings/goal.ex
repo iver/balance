@@ -37,4 +37,10 @@ defmodule Settings.Goal do
       add_error(changeset, :level, "invalid level")
     end
   end
+
+  defimpl Counter do
+    def sum(%Settings.Goal{team: team_setting, goals: goals}, acc, team) do
+      if team_setting == team, do: goals + acc, else: acc
+    end
+  end
 end

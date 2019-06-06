@@ -20,13 +20,16 @@ defmodule Json.Parser do
     Poison.decode!(params, as: value)
   end
 
+  def decode!(_params, _value) do
+    {:error, "Decode for value type is not implemented"}
+  end
+
   @doc """
   Encode a value to JSON, raises an exception on error.
 
   """
   def encode(bonus) do
     bonus
-    |> Poison.Encoder.encode(Map.new([]))
-    |> IO.iodata_to_binary()
+    |> Poison.encode(Map.new([]))
   end
 end

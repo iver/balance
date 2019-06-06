@@ -1,18 +1,8 @@
 defmodule Balance do
   @moduledoc """
-  Documentation for Balance.
+  Module responsible for calculating players' income at resuelve
   """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Balance.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def calculate(players) do
+    settings = Settings.load()
   end
 end

@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 ACTUAL := $(shell pwd)
-MIX_ENV=prod
+MIX_ENV=dev
 
 export MIX_ENV
 export ACTUAL
@@ -34,6 +34,7 @@ compile: clean
 	mix deps.compile
 	mix compile
 
+release: MIX_ENV=prod
 release: compile
 	@echo "Not implemented yet!"
 

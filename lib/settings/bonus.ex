@@ -5,7 +5,7 @@ defmodule Settings.Bonus do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @kinds_names ["team", "individual"]
+  @kinds ["team", "individual"]
 
   @derive {Poison.Encoder, only: [:percent, :kind]}
   schema "bonus_settings" do
@@ -37,7 +37,7 @@ defmodule Settings.Bonus do
   def validate_kind(changeset) do
     kind = get_field(changeset, :kind)
 
-    if kind in @kinds_names do
+    if kind in @kinds do
       changeset
     else
       add_error(changeset, :kind, "invalid kind name")

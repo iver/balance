@@ -5,13 +5,6 @@ use Mix.Config
 config :balance,
   ecto_repos: [Balance.Repo]
 
-config :balance, Balance.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  database: "balance_dev",
-  username: "balance_dev",
-  password: "balance",
-  hostname: "localhost"
-
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project. For this reason,
@@ -36,5 +29,5 @@ config :balance, Balance.Repo,
 # by uncommenting the line below and defining dev.exs, test.exs and such.
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
-#
-#     import_config "#{Mix.env()}.exs"
+
+import_config "#{Mix.env()}.exs"

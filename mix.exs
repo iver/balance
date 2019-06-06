@@ -11,6 +11,7 @@ defmodule Balance.MixProject do
       package: package(),
       aliases: aliases(),
       deps: deps(),
+      escript: escript(),
 
       # Docs
       name: "Balance",
@@ -22,6 +23,10 @@ defmodule Balance.MixProject do
         extras: ["README.md"]
       ]
     ]
+  end
+
+  def escript() do
+    [main_module: Screen]
   end
 
   def description() do

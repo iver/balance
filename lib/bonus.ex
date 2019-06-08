@@ -22,7 +22,7 @@ defmodule Bonus do
   ## Example
 
      iex> Bonus.amount(%{percent: %{individual: 0.6, team: 0.4}}, 5000)
-     %{amount: %{individual: "3000.00", team: "2000.00" }}
+     %{amount: %{individual: 3000.00, team: 2000.00 }}
 
   """
   def amount(%{percent: percent}, total_bonus) do
@@ -31,8 +31,8 @@ defmodule Bonus do
 
     %{
       amount: %{
-        individual: individual |> :erlang.float_to_binary(decimals: 2),
-        team: team |> :erlang.float_to_binary(decimals: 2)
+        individual: individual,
+        team: team
       }
     }
   end

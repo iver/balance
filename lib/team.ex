@@ -26,7 +26,8 @@ defmodule Team do
           goals: player["goles"],
           fixed: player["sueldo"],
           bonus: player["bono"],
-          team: player["team"]
+          team: player["equipo"],
+          total: player["sueldo_completo"]
         }
         | list
       ]

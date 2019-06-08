@@ -27,12 +27,18 @@ defmodule Goal do
 
   """
   def percentage(players, goals_settings, team) do
-    player = Goal.count(players, team)
+    players = Goal.count(players, team)
     goals = Goal.count(goals_settings, team)
-    require Logger
-    Logger.info("Count: #{player} count: #{goals}")
-    team = player / goals
-    %{team: team}
+    %{team: percentage!(players, goals)}
+  end
+
+  @spec percentage!(number, number) :: number | no_return
+  def percentage!(players, goals) do
+    if players > 0 && goals > 0 do
+      players / goals
+    else
+      raise "Goals must be greather than zero"
+    end
   end
 
   @doc """
@@ -60,6 +66,7 @@ defmodule Goal do
     end)
   end
 
+  @spec by_level(String.t(), [%Settings.Goal{}]) :: number
   def by_level(level, goal_settings) do
     settings = Enum.find(goal_settings, fn element -> element.level == level end)
     settings.goals

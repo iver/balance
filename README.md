@@ -4,6 +4,7 @@
 
 * [Installation](#installation)
   - [Checking the installed version of Elixir](#elixir)
+  - [Technical Documentation](#doc)
 * [Clone project](#clone)
 * [Howto execute](#exec) 
 * [Howto run test](#test)
@@ -56,9 +57,16 @@ If the repository is private though, you may need to specify the private URL `gi
 
 Using Git repositories for internal dependencies is somewhat discouraged in Elixir. Remember that the runtime and the Elixir ecosystem already provide the concept of applications. As such, we expect you to frequently break your code into applications that can be organized logically, even within a single project.
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm).The docs can
-be found at [https://iver.mx/doc/](https://iver.mx/doc/).
+
+<a name="doc"></a>
+
+### Documentation
+
+Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc) and published on [HexDocs](https://hexdocs.pm).The docs can be found at [https://iver.mx/doc/](https://iver.mx/doc/).
+
+### Database Settings
+
+Because one issue is can configure your own team with different goal settings and bonus. The program
 
 <a name="clone"></a>
 
@@ -75,6 +83,7 @@ $ git clone git@github.com:iver/balance.git ~/Workspace/balance
 ```
 
 <a name="exec"></a>
+
 ## Howto execute
 
 Go to project path:
@@ -99,10 +108,39 @@ iex(2)>
 $ cd ~/Workspace/balance
 
 $ mix test --trace
+
+
 ```
 
 <a name="binary"></a>
 
 ## The executable
+
+After the build was done you can use the binary:
+
+```
+$ ./balance -h
+
+NAME
+	 Balance -- Resuelve balance command line interface
+
+SYNOPSIS
+	 balance [--file(default)] <file to parse>
+
+AUTHOR
+	 Iván Jaimes
+	 ivan@iver.mx
+
+DESCRIPTION
+	 Calculate Resuelve FC players' salary.
+
+    
+OPTIONS
+	 -f | --file <file_json> 		Parse json file named <file_json>.
+	 -t | --text <text_json> 		Parse json text.
+	 -h | --help 		Shows the help.
+	 -v | --version 	Shows the gcli version.
+```
+
 
 

@@ -25,6 +25,10 @@ init:
 debug:
 	iex -S mix
 
+doc: compile
+	mix docs, ex_doc
+	tar -zcf docs.tar.gz doc/
+
 test: MIX_ENV=test
 test:
 	mix test
@@ -33,6 +37,7 @@ compile: clean
 	mix deps.get
 	mix deps.compile
 	mix compile
+	mix docs
 
 release: MIX_ENV=prod
 release: compile
@@ -44,4 +49,5 @@ deploy:
 clean:
 	mix clean
 	mix deps.clean --all
+	rm -rf doc/ docs.tar.gz
 

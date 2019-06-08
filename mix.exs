@@ -20,6 +20,7 @@ defmodule Balance.MixProject do
       docs: [
         main: "Balance",
         logo: "assets/balance.png",
+        markdown_processor: ExDocMakeup,
         extras: ["README.md"]
       ]
     ]
@@ -48,7 +49,10 @@ defmodule Balance.MixProject do
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
       maintainers: ["Iván Jaimes"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://gitlab.com/iver14/balance"}
+      links: %{
+        "GitHub" => "https://github.com/iver/balance",
+        "Gitlab" => "https://gitlab.com/iver14/balance"
+      }
     ]
   end
 
@@ -58,6 +62,7 @@ defmodule Balance.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, "~> 0.14"},
       {:ex_doc, "~> 0.20.1", only: :dev, runtime: false},
+      {:ex_doc_makeup, "~> 0.1.0", only: :dev},
       {:poison, "~> 4.0"},
       {:credo, "~> 1.0.5", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0.0-rc.6", only: [:dev], runtime: false}

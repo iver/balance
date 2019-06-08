@@ -15,7 +15,7 @@ defmodule Balance do
     end
   end
 
-  def calculate(players, %{goal: goal_settings, bonus: bonus_settings}) do
+  def calculate(players, %{goals: goal_settings, bonus: bonus_settings}) do
     Enum.reduce(players, [], fn player, acc ->
       amount = Balance.Salary.bonus(player, bonus_settings)
       individual = Goal.percentage(player, goal_settings)

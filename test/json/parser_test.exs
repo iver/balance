@@ -1,4 +1,4 @@
-defmodule Json.BonusTest do
+defmodule Json.ParserTest do
   use ExUnit.Case
   doctest Json.Parser
 

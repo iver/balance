@@ -12,6 +12,7 @@ defmodule Balance.Help do
     author()
     description()
     file()
+    text()
     help()
     version()
   end
@@ -25,6 +26,10 @@ defmodule Balance.Help do
 
   defp file() do
     IO.puts("\t -f | --file <file_json> \t\tParse json file named <file_json>.")
+  end
+
+  defp text() do
+    IO.puts("\t -t | --text <text_json> \t\tParse json text.")
   end
 
   defp help() do

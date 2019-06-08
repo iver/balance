@@ -13,8 +13,8 @@ defmodule Screen do
   end
 
   defp parse_args(args) do
-    switches = [file: :string, help: :boolean, version: :boolean]
-    aliases = [f: :file, h: :help, v: :version]
+    switches = [file: :string, help: :boolean, version: :boolean, text: :string]
+    aliases = [f: :file, t: :text, h: :help, v: :version]
 
     OptionParser.parse(args, switches: switches, aliases: aliases)
   end
@@ -27,7 +27,7 @@ defmodule Screen do
 
     Enum.each(switches, fn switch -> App.run(switch) end)
 
-    if length(switches) == 0 do
+    if Enum.empty?(switches) do
       IO.puts("balance: Ilegal option.\n")
       Balance.Help.use()
     end

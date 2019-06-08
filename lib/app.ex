@@ -14,7 +14,15 @@ defmodule App do
   end
 
   def run({:file, filename}) do
-    IO.puts("Not implemented yet! ... file: #{filename}")
+    settings = Settings.load()
+
+    filename
+    |> Balance.read_file()
+    |> Balance.calculate(settings)
+  end
+
+  def run({:text, data}) do
+    IO.puts("Not implemented yet! ... file: #{data}")
   end
 
   def run({:help, true}) do

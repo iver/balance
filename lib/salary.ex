@@ -10,11 +10,4 @@ defmodule Balance.Salary do
     # %{amount: %{individual: individual, team: team}}
     Bonus.amount(percent, player.bonus)
   end
-
-  # Eliminar
-  #  def bonus(%{bonus: bonus}, percent) do
-  #    individual = bonus.individual * percent.individual
-  #    team = bonus.team * percent.team
-  #    %{ok: %{individual: limit(individual, bonus.individual), team: limit(team, bonus.team)}}
-  #  end
 end

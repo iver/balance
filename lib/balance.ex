@@ -118,7 +118,15 @@ defmodule Balance do
     end
   end
 
+  @doc """
+  Return a list of players with the total salary calculated
+  """
+  @spec calculate([%Player{}], %{goals: [%Settings.Goal{}], bonus: [%Settings.Bonus{}]}) :: [
+          %Player{}
+        ]
   def calculate(players, %{goals: goal_settings, bonus: bonus_settings}) do
+    require Logger
+
     Enum.reduce(players, [], fn player, acc ->
       amount = Balance.Salary.bonus(player, bonus_settings)
       individual = Goal.percentage(player, goal_settings)
@@ -126,6 +134,7 @@ defmodule Balance do
 
       bonus = total_bonus(%{percent: Enum.into(individual, team_percent)}, amount)
       player = %{player | total: player.fixed + bonus}
+      Logger.info("Player: #{inspect(player)}")
       [player | acc]
     end)
   end

@@ -19,6 +19,7 @@ defmodule App do
     filename
     |> Balance.read_file()
     |> Balance.calculate(settings)
+    |> IO.puts()
   end
 
   def run({:text, data}) do

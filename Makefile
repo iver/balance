@@ -26,7 +26,7 @@ debug:
 	iex -S mix
 
 doc: compile
-	mix docs, ex_doc
+	mix docs
 	tar -zcf docs.tar.gz doc/
 
 test: MIX_ENV=test

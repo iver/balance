@@ -4,10 +4,14 @@ defmodule Goal do
 
   ## Example
 
+  ```
+
      iex> player = %Player{goals: 9, level: "C"}
      iex> goal_settings = [%Settings.Goal{level: "C", goals: 10, team: "all"}]
      iex> Goal.percentage(player, goal_settings)
      %{individual: 0.9}
+
+   ```
 
   """
   def percentage(player, goals_settings) do
@@ -20,10 +24,14 @@ defmodule Goal do
 
   ## Example
 
-  iex> players = [%Player{goals: 9, team: "all"}, %Player{goals: 10, team: "all"}]
-  iex> goal_settings = [%Settings.Goal{level: "C", goals: 10, team: "all"}, %Settings.Goal{level: "A", goals: 10, team: "all"}]
-  iex> Goal.percentage(players, goal_settings, "all")
-  %{team: 0.95}
+  ```
+
+     iex> players = [%Player{goals: 9, team: "all"}, %Player{goals: 10, team: "all"}]
+     iex> goal_settings = [%Settings.Goal{level: "C", goals: 10, team: "all"}, %Settings.Goal{level: "A", goals: 10, team: "all"}]
+     iex> Goal.percentage(players, goal_settings, "all")
+     %{team: 0.95}
+
+  ```
 
   """
   def percentage(players, goals_settings, team) do
@@ -47,6 +55,8 @@ defmodule Goal do
 
   ## Examples
 
+  ```
+
      iex> settings = Balance.Repo.list_goals_settings()
      iex> Goal.count(settings, "all")
      25
@@ -57,6 +67,8 @@ defmodule Goal do
      ...> %Player{name: "Tercero", goals: 15, team: "rojo"}]
      iex> Goal.count(players, "rojo")
      30
+
+  ```
 
   """
   @spec count([%{}], String.t()) :: integer

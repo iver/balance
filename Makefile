@@ -19,7 +19,11 @@ help:
 install:
 	@echo "Not implemented yet!"
 
-init:
+get:
+	mix deps.get
+	mix deps.compile
+
+init: get
 	mix ecto.reset
 
 debug:
@@ -33,9 +37,7 @@ test: MIX_ENV=test
 test: init
 	mix test
 
-compile: clean
-	mix deps.get
-	mix deps.compile
+compile: clean get
 	mix compile
 	mix docs
 	tar -zcf docs.tar.gz doc/

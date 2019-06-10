@@ -106,6 +106,8 @@ defmodule Balance do
 
   """
   alias Balance.Models.Player
+  require Logger
+
 
   @doc """
   Read a file in json format and return a list of players
@@ -122,11 +124,10 @@ defmodule Balance do
   @doc """
   Return a list of players with the total salary calculated
   """
-  @spec calculate([%Player{}], %{goals: [%Balance.Settings.Goal{}], bonus: [%Balance.Settings.Bonus{}]}) :: [
+  @spec calculate([%Player{}], Balance.Settings.t()) :: [
           %Player{}
         ]
   def calculate(players, %{goals: goal_settings, bonus: bonus_settings}) do
-    require Logger
 
     Enum.reduce(players, [], fn player, acc ->
       amount = Balance.Salary.bonus(player, bonus_settings)
@@ -138,6 +139,15 @@ defmodule Balance do
       Logger.info("Player: #{inspect(player)}")
       [player | acc]
     end)
+  end
+
+  def save(players) do
+    case Json.Parser.encode(players) do
+      {:ok, result} ->
+        File.write("players.json", result , [:binary])
+      {:error, result} ->
+        {:error, result}
+    end
   end
 
   @doc """

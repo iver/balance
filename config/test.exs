@@ -5,4 +5,4 @@ config :balance, Balance.Repo,
   database: "balance_test",
   username: "balance_test",
   password: "balance",
-  hostname: "localhost"
+  hostname: "postgres"

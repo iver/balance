@@ -4,13 +4,13 @@ services:
   - postgres:latest
 
 variables:
-  POSTGRES_DB: balance_dev
-  POSTGRES_USER: balance_dev
+  POSTGRES_DB: balance_test
+  POSTGRES_USER: balance_test
   POSTGRES_PASSWORD: "balance"
 
 stages:
-  - build
   - connect
+  - build
   - test
 
 connect-db:
@@ -21,7 +21,6 @@ connect-db:
   - psql -h "postgres" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT 'OK' AS status;"
 
 build-dev:
-  image: postgres:latest
   stage: build
   services:
     - postgres:latest
@@ -30,8 +29,8 @@ build-dev:
       - deps/
       - _build/
   script:
-    - make init
-    - make compile
+    - MIX_ENV=test make init
+    - MIX_ENV=test make compile
   environment:
     name: develop
   only:
@@ -40,7 +39,6 @@ build-dev:
     - /^hotfix.*$/
 
 test-models-balance:
-  image: postgres:latest
   stage: test
   services:
     - postgres:latest
@@ -49,14 +47,13 @@ test-models-balance:
       - deps/
       - _build/
   script:
-    - make test
+    - MIX_ENV=test make test
   dependencies:
     - build-dev
     - build-prod
     - connect-db
 
 build-prod:
-  image: postgres:latest
   stage: build
   services:
     - postgres:latest
@@ -65,8 +62,8 @@ build-prod:
       - deps/
       - _build/
   script:
-    - make init
-    - make compile
+    - MIX_ENV=test make init
+    - MIX_ENV=test make compile
   environment:
     name: production
   only:

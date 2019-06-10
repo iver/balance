@@ -1,4 +1,4 @@
-defmodule Settings.Bonus do
+defmodule Balance.Settings.Bonus do
   @moduledoc """
   Bonus module is used to save into repository and validate any worng data
   """
@@ -25,13 +25,15 @@ defmodule Settings.Bonus do
 
   ## Examples
 
-     iex> change = Settings.Bonus.changeset(%Settings.Bonus{}, %{percent: 1, kind: "team"})
-     iex> Settings.Bonus.validate_kind(change)
-     #Ecto.Changeset<action: nil, changes: %{percent: 1.0}, errors: [], data: #Settings.Bonus<>, valid?: true>
+     iex> alias Balance.Settings.Bonus
+     iex> change = Bonus.changeset(%Bonus{}, %{percent: 1, kind: "team"})
+     iex> Bonus.validate_kind(change)
+     #Ecto.Changeset<action: nil, changes: %{percent: 1.0}, errors: [], data: #Balance.Settings.Bonus<>, valid?: true>
 
-     iex> change = Settings.Bonus.changeset(%Settings.Bonus{}, %{percent: 1, kind: "invalid team"})
-     iex> Settings.Bonus.validate_kind(change)
-     #Ecto.Changeset<action: nil, changes: %{kind: \"invalid team\", percent: 1.0}, errors: [kind: {\"invalid kind name\", []}, kind: {\"invalid kind name\", []}], data: #Settings.Bonus<>, valid?: false>
+     iex> alias Balance.Settings.Bonus
+     iex> change = Bonus.changeset(%Bonus{}, %{percent: 1, kind: "invalid team"})
+     iex> Bonus.validate_kind(change)
+     #Ecto.Changeset<action: nil, changes: %{kind: \"invalid team\", percent: 1.0}, errors: [kind: {\"invalid kind name\", []}, kind: {\"invalid kind name\", []}], data: #Balance.Settings.Bonus<>, valid?: false>
 
   """
   def validate_kind(changeset) do

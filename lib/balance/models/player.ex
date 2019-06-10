@@ -1,4 +1,4 @@
-defmodule Player do
+defmodule Balance.Models.Player do
   @moduledoc """
   Entity that represents a player
   """
@@ -15,7 +15,7 @@ defmodule Player do
   )
 
   defimpl Counter do
-    def sum(%Player{team: team_player, goals: goals}, acc, team) do
+    def sum(%Balance.Models.Player{team: team_player, goals: goals}, acc, team) do
       if team_player == team, do: goals + acc, else: acc
     end
   end

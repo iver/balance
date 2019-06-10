@@ -8,8 +8,8 @@ defmodule Json.Parser do
 
   ## Example
 
-     iex> Json.Parser.decode!(~s({"percent": 0.5, "kind": "individual"}), %Settings.Bonus{})
-     %Settings.Bonus{
+     iex> Json.Parser.decode!(~s({"percent": 0.5, "kind": "individual"}), %Balance.Settings.Bonus{})
+     %Balance.Settings.Bonus{
      id: nil,
      kind: \"individual\",
      percent: 0.5

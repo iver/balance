@@ -3,7 +3,7 @@ defmodule Balance.Salary do
   Returns bonus tupe as %{individual: bonus, team: bonus} calculated depends on the player
   definition and current settings
   """
-  @spec bonus(%Player{}, %Settings.Goal{}) :: %{}
+  @spec bonus(%Balance.Models.Player{}, %Balance.Settings.Goal{}) :: %{}
   def bonus(player, goal_settings) do
     # settings %{percent: %{individual: individual, team: team}}
     percent = Bonus.percentage(goal_settings)

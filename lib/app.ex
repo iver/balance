@@ -14,7 +14,7 @@ defmodule App do
   end
 
   def run({:file, filename}) do
-    settings = Settings.load()
+    settings = Balance.Settings.load()
 
     filename
     |> Balance.read_file()

@@ -1,4 +1,4 @@
 defmodule PlayerTest do
   use ExUnit.Case
-  doctest Player
+  doctest Balance.Models.Player
 end

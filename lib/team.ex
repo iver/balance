@@ -24,7 +24,7 @@ defmodule Team do
     result =
       Enum.reduce(players, [], fn player, list ->
         [
-          %Player{
+          %Balance.Models.Player{
             name: player["nombre"],
             level: player["nivel"],
             goals: player["goles"],

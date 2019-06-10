@@ -71,7 +71,7 @@ defmodule Balance do
       "equipo":"azul"
 
    },
-   {  
+   {
       "nombre":"El Rulo",
       "nivel":"B",
       "goles":9,
@@ -85,11 +85,11 @@ defmodule Balance do
   ```
 
 
-  En la respuesta deberás llenar la llave `sueldo_completo` con el monto correcto de cada jugador. 
+  En la respuesta deberás llenar la llave `sueldo_completo` con el monto correcto de cada jugador.
 
   ```json
   [
-   {  
+   {
       "nombre":"El Rulo",
       "goles_minimos":10,
       "goles":9,
@@ -105,6 +105,7 @@ defmodule Balance do
   Además de calcular el sueldo de los jugadores del Resuelve FC, tu programa puede calcular el sueldo de los jugadores de otros equipos con distintos mínimos por nivel. Tu programa deberá recibir como input un solo JSON con el arreglo de equipos.
 
   """
+  alias Balance.Models.Player
 
   @doc """
   Read a file in json format and return a list of players
@@ -121,7 +122,7 @@ defmodule Balance do
   @doc """
   Return a list of players with the total salary calculated
   """
-  @spec calculate([%Player{}], %{goals: [%Settings.Goal{}], bonus: [%Settings.Bonus{}]}) :: [
+  @spec calculate([%Player{}], %{goals: [%Balance.Settings.Goal{}], bonus: [%Balance.Settings.Bonus{}]}) :: [
           %Player{}
         ]
   def calculate(players, %{goals: goal_settings, bonus: bonus_settings}) do

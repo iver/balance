@@ -1,5 +1,6 @@
-defmodule Settings do
+defmodule Balance.Settings do
   alias Balance.Repo
+  alias __MODULE__
 
   @moduledoc """
   Define settings type like %Settings.Goal{} and %Settings.Bonus{}
@@ -13,7 +14,7 @@ defmodule Settings do
   @doc """
   Load available settings and returns a %Settings{} struct
   """
-  @spec load() :: Settings.t()
+  @spec load() :: Balance.Settings.t()
   def load do
     goals = Repo.list_goals_settings()
     bonus = Repo.list_bonus_settings()

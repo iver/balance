@@ -7,6 +7,7 @@ defmodule Balance.Repo do
     adapter: Ecto.Adapters.Postgres
 
   alias __MODULE__
+  alias Balance.Settings
 
   @doc """
   Returns the list of settings of bonus.
@@ -14,7 +15,7 @@ defmodule Balance.Repo do
   ## Example
 
      iex> Repo.list_bonus_settings()
-     [%Settings.Bonus{}]
+     [%Balance.Settings.Bonus{}]
 
   """
   def list_bonus_settings do
@@ -22,12 +23,12 @@ defmodule Balance.Repo do
   end
 
   @doc """
-  Creates a Settings.Bonus.
+  Creates a Balance.Settings.Bonus.
 
   ## Examples
 
      iex> Balance.Repo.create_bonus(%{percent: 0.5, kind: "individual"})
-     {:ok, %Settings.Bonus{}}
+     {:ok, %Balance.Settings.Bonus{}}
 
      iex> Repo.create_bonus(%{percent: 0.3, kind: "other_data"})
      {:error, %Ecto.Changeset{}}
@@ -46,7 +47,7 @@ defmodule Balance.Repo do
 
      iex> bonus = Repo.get_by(id: 1)
      iex> Repo.update_bonus(bonus, %{percent: 0.4})
-     {:ok, %Settings.Bonus{percent: 0.4}}
+     {:ok, %Balance.Settings.Bonus{percent: 0.4}}
 
      iex> bonus = Repo.get_by(id: 1)
      iex> Repo.update_bonus(bonus, %{percent: -1})
@@ -66,7 +67,7 @@ defmodule Balance.Repo do
 
      iex> bonus = Repo.get_by(id: 1)
      iex> Repo.delete_bonus(bonus)
-     {:ok, %Settings.Bonus{}}
+     {:ok, %Balance.Settings.Bonus{}}
 
      iex> bonus = Repo.get_by(id: 5)
      iex> Repo.delete_bonus(bonus)
@@ -83,7 +84,7 @@ defmodule Balance.Repo do
   ## Example
 
   iex> Repo.list_goals_settings()
-  [%Settings.Goal{}]
+  [%Balance.Settings.Goal{}]
 
   """
   def list_goals_settings do
@@ -91,12 +92,12 @@ defmodule Balance.Repo do
   end
 
   @doc """
-  Creates a Settings.Goal.
+  Creates a Balance.Settings.Goal.
 
   ## Examples
 
      iex> Repo.create_goal(%{level: "D", goals: 12, team: "juniors"})
-     {:ok, %Settings.Goal{}}
+     {:ok, %Balance.Settings.Goal{}}
 
      iex> Repo.create_goal(%{level: 1, goals: 10, team: "team"})
      {:error, %Ecto.Changeset{}}
@@ -109,13 +110,13 @@ defmodule Balance.Repo do
   end
 
   @doc """
-  Updates a Settings.Goal.
+  Updates a Balance.Settings.Goal.
 
   ## Examples
 
      iex> goal = Repo.get_by(id: 1)
      iex> Repo.update_goal(goal, %{level: "A", goals: 12, team: "rojo"})
-     {:ok, %Settings.Goal{}}
+     {:ok, %Balance.Settings.Goal{}}
 
      iex> goal = Repo.get_by(id: 1)
      iex> Repo.update_goal(goal, %{level: "X", goals: 19, team: "blanco"})
@@ -135,7 +136,7 @@ defmodule Balance.Repo do
 
      iex> goal = Repo.get_by(id: 1)
      iex> Repo.delete_goal(goal)
-     {:ok, %Settings.Goal{}}
+     {:ok, %Balance.Settings.Goal{}}
 
      iex> goal = Repo.get_by(id: 1)
      iex> Repo.delete_goal(goal)

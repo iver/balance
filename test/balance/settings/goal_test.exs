@@ -1,9 +1,9 @@
-defmodule Settings.GoalTest do
+defmodule Balance.Settings.GoalTest do
   use ExUnit.Case
-  doctest Settings.Goal
+  doctest Balance.Settings.Goal
 
   describe "GoalSettings" do
-    alias Settings.Goal
+    alias Balance.Settings.Goal
     @valid_attrs %{level: "A", goals: 5, team: "all"}
     @valid_attrs_c %{level: "Cuauh", goals: 20, team: "all"}
     @update_attrs %{level: "B", goals: 10, team: "rojo"}

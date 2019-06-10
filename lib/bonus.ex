@@ -9,7 +9,7 @@ defmodule Bonus do
      %{percent: %{individual: 1.0, team: 0.5}}
 
   """
-  @spec percentage([%Settings.Bonus{}]) :: %{}
+  @spec percentage([%Balance.Settings.Bonus{}]) :: %{}
   def percentage(bonus_settings) do
     team = Enum.find(bonus_settings, fn bonus -> bonus.kind == "team" end)
     individual = Enum.find(bonus_settings, fn bonus -> bonus.kind == "individual" end)

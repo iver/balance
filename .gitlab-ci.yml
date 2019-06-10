@@ -37,6 +37,8 @@ build-dev:
     - develop
     - /^release.*$/
     - /^hotfix.*$/
+  dependencies:
+    - connect-db
 
 test-models-balance:
   stage: test
@@ -68,3 +70,5 @@ build-prod:
     name: production
   only:
     - master
+  dependencies:
+    - connect-db

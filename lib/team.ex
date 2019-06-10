@@ -7,9 +7,9 @@ defmodule Team do
   Convert a json string to player list as [%Player{}]
 
   """
-  def parser(data) when is_bitstring(data) do
+  def extract(data) when is_bitstring(data) do
     with {:ok, json} <- Poison.decode(data),
-         {:ok, players} <- parser(json) do
+         {:ok, players} <- extract(json) do
       {:ok, players}
     else
       :error -> {:error, "The data couldn't parse"}
@@ -20,7 +20,7 @@ defmodule Team do
   Convert a decoded list to player list as [%Player{}]
 
   """
-  def parser(players) do
+  def extract(players) do
     result =
       Enum.reduce(players, [], fn player, list ->
         [
@@ -32,6 +32,26 @@ defmodule Team do
             bonus: player["bono"],
             team: player["equipo"],
             total: player["sueldo_completo"]
+          }
+          | list
+        ]
+      end)
+
+    {:ok, result}
+  end
+  def export(players) do
+
+    result =
+      Enum.reduce(players, [], fn player, list ->
+        [
+          %{
+            nombre: player.name,
+            nivel: player.level,
+            goles: player.goals,
+            sueldo: player.fixed,
+            bono: player.bonus,
+            equipo: player.team,
+            sueldo_completo: player.total
           }
           | list
         ]

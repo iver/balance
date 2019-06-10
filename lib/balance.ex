@@ -114,7 +114,7 @@ defmodule Balance do
   """
   def read_file(filename) do
     with {:ok, body} <- File.read(filename),
-         {:ok, players} <- Team.parser(body) do
+         {:ok, players} <- Team.extract(body) do
       players
     else
       :error -> {:error, "The #{filename} couldn't parse"}
@@ -124,42 +124,27 @@ defmodule Balance do
   @doc """
   Return a list of players with the total salary calculated
   """
-  @spec calculate([%Player{}], Balance.Settings.t()) :: [
-          %Player{}
-        ]
-  def calculate(players, %{goals: goal_settings, bonus: bonus_settings}) do
-
+  @spec calculate([%Player{}], Balance.Settings.t()) :: [%Player{}]
+  def calculate(players, settings) do
     Enum.reduce(players, [], fn player, acc ->
-      amount = Balance.Salary.bonus(player, bonus_settings)
-      individual = Goal.percentage(player, goal_settings)
-      team_percent = Goal.percentage(players, goal_settings, player.team)
-
-      bonus = total_bonus(%{percent: Enum.into(individual, team_percent)}, amount)
-      player = %{player | total: player.fixed + bonus}
+      player = Balance.Salary.calculate(players, player, settings)
       Logger.info("Player: #{inspect(player)}")
       [player | acc]
     end)
   end
 
-  def save(players) do
-    case Json.Parser.encode(players) do
-      {:ok, result} ->
-        File.write("players.json", result , [:binary])
-      {:error, result} ->
-        {:error, result}
+  def save(result) do
+    case result do
+      {:ok, players} -> 
+        case Json.Parser.encode(players) do
+          {:ok, result} ->
+            File.write("players.json", result , [:binary])
+          {:error, result} ->
+            {:error, result}
+        end
+      {:error, data} ->
+        {:error, data}
     end
   end
 
-  @doc """
-  Get total bonus from individual and team limits
-  """
-  def total_bonus(%{percent: percent}, %{amount: amount}) do
-    individual = amount.individual * percent.individual
-    team = amount.team * percent.team
-    limit(individual, amount.individual) + limit(team, amount.team)
-  end
-
-  defp limit(bonus, amount) do
-    if bonus > amount, do: amount, else: bonus
-  end
 end

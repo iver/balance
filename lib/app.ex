@@ -19,7 +19,9 @@ defmodule App do
     filename
     |> Balance.read_file()
     |> Balance.calculate(settings)
+    |> Team.export()
     |> Balance.save()
+    |> IO.puts()
   end
 
   def run({:text, data}) do

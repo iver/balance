@@ -2,10 +2,11 @@ use Mix.Config
 
 config :balance, Balance.Repo,
   adapter: Ecto.Adapters.Postgres,
-  database: "balance_dev",
-  username: "balance_dev",
-  password: "balance",
-  hostname: "localhost"
+  database: System.get_env("POSTGRES_DB") || "balance_dev",
+  username: System.get_env("POSTGRES_USER") || "balance_dev",
+  password: System.get_env("POSTGRES_PASSWORD") || "balance",
+  hostname: System.get_env("POSTGRES_HOST") || "localhost",
+  pool: Ecto.Adapters.SQL.Sandbox
 
 # Our Logger general configuration
 config :logger,

@@ -1,4 +1,4 @@
-image: elixir:latest
+image: trenpixster/elixir:latest
 
 services:
   - postgres:latest
@@ -7,6 +7,7 @@ variables:
   POSTGRES_DB: balance_test
   POSTGRES_USER: balance_test
   POSTGRES_PASSWORD: "balance"
+  POSTGRES_HOST: postgres
 
 stages:
   - connect
@@ -28,6 +29,8 @@ build-dev:
     paths:
       - deps/
       - _build/
+  before-script:
+    - apt-get update && apt-get -y install postgresql-client
   script:
     - MIX_ENV=test make init
     - MIX_ENV=test make compile
@@ -63,6 +66,8 @@ build-prod:
     paths:
       - deps/
       - _build/
+  before-script:
+    - apt-get update && apt-get -y install postgresql-client
   script:
     - MIX_ENV=test make init
     - MIX_ENV=test make compile

@@ -26,7 +26,7 @@ get:
 	mix deps.compile;
 
 init: get
-	mix ecto.reset
+	mix ecto.setup
 
 debug:
 	iex -S mix

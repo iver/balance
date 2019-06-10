@@ -37,6 +37,7 @@ doc: compile
 test: MIX_ENV=test
 test: init
 	mix test
+	mix coveralls
 
 compile: clean get
 	mix compile

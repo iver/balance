@@ -11,6 +11,8 @@ defmodule Balance.MixProject do
       package: package(),
       aliases: aliases(),
       deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
       escript: escript(),
 
       # Docs
@@ -65,6 +67,7 @@ defmodule Balance.MixProject do
       {:ex_doc_makeup, "~> 0.1.0", only: :dev},
       {:poison, "~> 4.0"},
       {:credo, "~> 1.0.5", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.11", only: :test},
       {:dialyxir, "~> 1.0.0-rc.6", only: [:dev], runtime: false}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}

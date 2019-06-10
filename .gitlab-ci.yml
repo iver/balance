@@ -45,7 +45,7 @@ test-models-balance:
   script:
     - make test
   dependencies:
-    - build-balance
+    - build-dev
     - build-prod
     - connect-db
 

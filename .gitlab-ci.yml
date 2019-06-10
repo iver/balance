@@ -20,20 +20,45 @@ connect-db:
   - export PGPASSWORD=$POSTGRES_PASSWORD
   - psql -h "postgres" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT 'OK' AS status;"
 
-build-balance:
+build-dev:
   stage: build
   cache:
-  paths:
-    - deps/
-    - _build/
+    paths:
+      - deps/
+      - _build/
   script:
     - make init
     - make compile
+  environment:
+    name: develop
+  only:
+    - develop
+    - /^release.*$/
+    - /^hotfix.*$/
 
 test-models-balance:
   stage: test
+  cache:
+    paths:
+      - deps/
+      - _build/
   script:
     - make test
   dependencies:
     - build-balance
+    - build-prod
     - connect-db
+
+build-prod:
+  stage: build
+  cache:
+    paths:
+      - deps/
+      - _build/
+  script:
+    - make init
+    - make compile
+  environment:
+    name: production
+  only:
+    - master

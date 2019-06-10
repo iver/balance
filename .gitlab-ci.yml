@@ -14,6 +14,9 @@ stages:
   - build
   - test
 
+before_script:
+  - apt-get update && apt-get -y install postgresql-client
+
 connect-db:
   image: postgres:latest
   stage: connect
@@ -29,8 +32,6 @@ build-dev:
     paths:
       - deps/
       - _build/
-  before-script:
-    - apt-get update && apt-get -y install postgresql-client
   script:
     - MIX_ENV=test make init
     - MIX_ENV=test make compile
@@ -66,8 +67,6 @@ build-prod:
     paths:
       - deps/
       - _build/
-  before-script:
-    - apt-get update && apt-get -y install postgresql-client
   script:
     - MIX_ENV=test make init
     - MIX_ENV=test make compile

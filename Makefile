@@ -21,6 +21,7 @@ install:
 
 get:
 	mix local.hex --force;
+	mix local.rebar --force;
 	mix deps.get;
 	mix deps.compile;
 
@@ -54,5 +55,5 @@ deploy:
 clean:
 	mix clean
 	mix deps.clean --all
-	rm -rf doc/ docs.tar.gz
+	rm -rf doc/ docs.tar.gz balance
 

@@ -20,6 +20,7 @@ install:
 	@echo "Not implemented yet!"
 
 get:
+  mix local.hex --force
 	mix deps.get
 	mix deps.compile
 

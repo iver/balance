@@ -1,4 +1,5 @@
 # Balance
+[![Build Status](https://travis-ci.org/iver/balance.svg?branch=master)](https://travis-ci.org/iver/balance)
 
 ![Balance Logo](assets/balance.png)
 

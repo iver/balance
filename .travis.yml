@@ -1,0 +1,21 @@
+language: elixir
+elixir: 1.8
+
+branches:
+  only:
+  - master
+  - develop
+
+services:
+  - postgresql
+
+install:
+- make init
+
+script:
+- make compile
+- make test
+
+notifications:
+  email: false
+

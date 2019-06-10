@@ -1,0 +1,35 @@
+image: elixir:latest
+
+services:
+  - postgres:latest
+
+variables:
+  POSTGRES_DB: balance_dev
+  POSTGRES_USER: balance_dev
+  POSTGRES_PASSWORD: "balance"
+
+stages:
+  - build
+  - connect
+  - test
+
+connect-db:
+  image: postgres:latest
+  stage: connect
+  script:
+  - export PGPASSWORD=$POSTGRES_PASSWORD
+  - psql -h "postgres" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT 'OK' AS status;"
+
+build-balance:
+  stage: build
+  script:
+    - make init
+    - make compile
+
+test-models-balance:
+  stage: test
+  script:
+    - make test
+  dependencies:
+    - build-balance
+    - connect-db

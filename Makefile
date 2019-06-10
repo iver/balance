@@ -30,7 +30,7 @@ doc: compile
 	tar -zcf docs.tar.gz doc/
 
 test: MIX_ENV=test
-test:
+test: init
 	mix test
 
 compile: clean

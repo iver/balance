@@ -98,9 +98,237 @@ $ iex -S mix
 Erlang/OTP 21 [erts-10.2.3] [source] [64-bit] [smp:4:4] [ds:4:4:10] [async-threads:1] [hipe] [dtrace]
 
 Interactive Elixir (1.8.1) - press Ctrl+C to exit (type h() ENTER for help)
-iex(1)> 
-:ok
-iex(2)> 
+iex(1)> filename = "assets/input_test.json"
+"assets/input_test.json"
+iex(2)>  data = Balance.read_file(filename)
+[
+  %Balance.Models.Player{
+    bonus: 15000,
+    fixed: 30000,
+    goals: 9,
+    level: "B",
+    name: "El Rulo",
+    team: "rojo",
+    total: nil,
+    variable: 0
+  },
+  %Balance.Models.Player{
+    bonus: 10000,
+    fixed: 20000,
+    goals: 7,
+    level: "A",
+    name: "Cosme Fulanito",
+    team: "azul",
+    total: nil,
+    variable: 0
+  },
+  %Balance.Models.Player{
+    bonus: 30000,
+    fixed: 100000,
+    goals: 30,
+    level: "Cuauh",
+    name: "EL Cuauh",
+    team: "azul",
+    total: nil,
+    variable: 0
+  },
+  %Balance.Models.Player{
+    bonus: 25000,
+    fixed: 50000,
+    goals: 10,
+    level: "C",
+    name: "Juan Perez",
+    team: "rojo",
+    total: nil,
+    variable: 0
+  }
+]
+iex(3)> settings = Balance.Settings.load()
+%Balance.Settings{
+  bonus: [
+    %Balance.Settings.Bonus{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "bonus_settings">,
+      id: 1,
+      kind: "team",
+      percent: 0.5
+    },
+    %Balance.Settings.Bonus{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "bonus_settings">,
+      id: 2,
+      kind: "individual",
+      percent: 0.5
+    }
+  ],
+  goals: [
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 5,
+      id: 1,
+      level: "A",
+      team: "all"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 10,
+      id: 2,
+      level: "B",
+      team: "all"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 15,
+      id: 3,
+      level: "C",
+      team: "all"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 20,
+      id: 4,
+      level: "Cuauh",
+      team: "all"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 5,
+      id: 5,
+      level: "A",
+      team: "rojo"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 10,
+      id: 6,
+      level: "B",
+      team: "rojo"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 15,
+      id: 7,
+      level: "C",
+      team: "rojo"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 20,
+      id: 8,
+      level: "Cuauh",
+      team: "rojo"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 5,
+      id: 9,
+      level: "A",
+      team: "azul"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 10,
+      id: 10,
+      level: "B",
+      team: "azul"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 15,
+      id: 11,
+      level: "C",
+      team: "azul"
+    },
+    %Balance.Settings.Goal{
+      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
+      goals: 20,
+      id: 12,
+      level: "Cuauh",
+      team: "azul"
+    }
+  ]
+}
+iex(4)> json = Balance.calculate(data, settings)
+[
+  %Balance.Models.Player{
+    bonus: 25000,
+    fixed: 50000,
+    goals: 10,
+    level: "C",
+    name: "Juan Perez",
+    team: "rojo",
+    total: "63083.33",
+    variable: 0
+  },
+  %Balance.Models.Player{
+    bonus: 30000,
+    fixed: 100000,
+    goals: 30,
+    level: "Cuauh",
+    name: "EL Cuauh",
+    team: "azul",
+    total: "126100.00",
+    variable: 0
+  },
+  %Balance.Models.Player{
+    bonus: 10000,
+    fixed: 20000,
+    goals: 7,
+    level: "A",
+    name: "Cosme Fulanito",
+    team: "azul",
+    total: "28700.00",
+    variable: 0
+  },
+  %Balance.Models.Player{
+    bonus: 15000,
+    fixed: 30000,
+    goals: 9,
+    level: "B",
+    name: "El Rulo",
+    team: "rojo",
+    total: "39600.00",
+    variable: 0
+  }
+]
+iex(5)> players = Team.export(json)             
+{:ok,
+ [
+   %{
+     bono: 15000,
+     equipo: "rojo",
+     goles: 9,
+     nivel: "B",
+     nombre: "El Rulo",
+     sueldo: 30000,
+     sueldo_completo: "39600.00"
+   },
+   %{
+     bono: 10000,
+     equipo: "azul",
+     goles: 7,
+     nivel: "A",
+     nombre: "Cosme Fulanito",
+     sueldo: 20000,
+     sueldo_completo: "28700.00"
+   },
+   %{
+     bono: 30000,
+     equipo: "azul",
+     goles: 30,
+     nivel: "Cuauh",
+     nombre: "EL Cuauh",
+     sueldo: 100000,
+     sueldo_completo: "126100.00"
+   },
+   %{
+     bono: 25000, 
+     equipo: "rojo",
+     goles: 10,
+     nivel: "C",
+     nombre: "Juan Perez",
+     sueldo: 50000,
+     sueldo_completo: "63083.33"
+   }
+ ]}
 
 ```
 

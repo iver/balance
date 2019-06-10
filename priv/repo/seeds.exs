@@ -1,5 +1,9 @@
 alias Balance.Repo
 alias Balance.Settings
+require Logger
+
+config = Application.get_env(:balance, Balance.Repo, :database)
+Logger.info "Database config: #{inspect config}"
 
 Repo.insert!(%Settings.Bonus{kind: "team", percent: 0.5})
 Repo.insert!(%Settings.Bonus{kind: "individual", percent: 0.5})

@@ -22,6 +22,10 @@ connect-db:
 
 build-balance:
   stage: build
+  cache:
+  paths:
+    - deps/
+    - _build/
   script:
     - make init
     - make compile

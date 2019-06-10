@@ -124,8 +124,8 @@ defmodule Balance do
   @doc """
   Return a list of players with the total salary calculated
   """
-  @spec calculate([%Player{}], Balance.Settings.t()) :: [%Player{}]
-  def calculate(players, settings) do
+  @spec disperse([%Player{}], Balance.Settings.t()) :: [%Player{}]
+  def disperse(players, settings) do
     Enum.reduce(players, [], fn player, acc ->
       player = Balance.Salary.calculate(players, player, settings)
       Logger.debug("Player: #{inspect(player)}")

@@ -82,7 +82,7 @@ defmodule Balance.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.setup": ["run priv/repo/info.exs", "ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       "ecto.reset.test": ["ecto.drop", "ecto.create", "ecto.migrate"],
       test: ["ecto.reset.test --quiet", "ecto.migrate", "test"]

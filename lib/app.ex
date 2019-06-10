@@ -18,7 +18,7 @@ defmodule App do
 
     filename
     |> Balance.read_file()
-    |> Balance.calculate(settings)
+    |> Balance.disperse(settings)
     |> Team.export()
     |> Balance.save()
     |> IO.puts()

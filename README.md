@@ -1,7 +1,7 @@
 # Balance
 [![Travis Build Status](https://travis-ci.org/iver/balance.svg?branch=master)](https://travis-ci.org/iver/balance)
 [![Gitlab Build Status](https://gitlab.com/Iver14/balance/badges/master/build.svg)](https://gitlab.com/Iver14/balance/badges/master/build.svg)
-
+[![Coverage Status](https://coveralls.io/repos/github/iver/balance/badge.svg?branch=master)](https://coveralls.io/github/iver/balance?branch=master)
 
 ![Balance Logo](assets/balance.png)
 

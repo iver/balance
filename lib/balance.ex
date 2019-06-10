@@ -128,7 +128,7 @@ defmodule Balance do
   def calculate(players, settings) do
     Enum.reduce(players, [], fn player, acc ->
       player = Balance.Salary.calculate(players, player, settings)
-      Logger.info("Player: #{inspect(player)}")
+      Logger.debug("Player: #{inspect(player)}")
       [player | acc]
     end)
   end

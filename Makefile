@@ -38,6 +38,7 @@ compile: clean
 	mix deps.compile
 	mix compile
 	mix docs
+	tar -zcf docs.tar.gz doc/
 
 release: MIX_ENV=prod
 release: compile

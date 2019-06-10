@@ -3,7 +3,7 @@ defmodule Goal do
 
   @spec percentage(number, number) :: %{}
   def percentage(%{players: players, goals: goals}) do
-    Logger.info("percentage!(#{players}, #{goals})")
+    Logger.debug("percentage!(#{players}, #{goals})")
 
     if players > 0 && goals > 0 do
       result = (players / goals)
@@ -30,8 +30,8 @@ defmodule Goal do
   """
   @spec percentage(%Balance.Models.Player{}, [%Balance.Settings.Goal{}]) :: %{}
   def percentage(player, goals_settings) do
-    Logger.info("percentage(player. goals_settings)")
-    Logger.info("Player: #{inspect(player)} -- goals_settings: #{inspect(goals_settings)}")
+    Logger.debug("percentage(player. goals_settings)")
+    Logger.debug("Player: #{inspect(player)} -- goals_settings: #{inspect(goals_settings)}")
     individual = player.goals / Goal.by_level(player.level, goals_settings)
     %{individual: individual}
   end
@@ -54,7 +54,7 @@ defmodule Goal do
   def percentage(players, goals_settings, team) do
     players = Goal.count(players, team)
     goals = Goal.count(goals_settings, team)
-    Logger.info("-- Percentage -- team: #{team}")
+    Logger.debug("-- Percentage -- team: #{team}")
     case percentage(%{players: players, goals: goals}) do
       {:ok, result} ->
         %{team: result}

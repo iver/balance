@@ -21,7 +21,10 @@ connect-db:
   - psql -h "postgres" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT 'OK' AS status;"
 
 build-dev:
+  image: postgres:latest
   stage: build
+  services:
+    - postgres:latest
   cache:
     paths:
       - deps/
@@ -37,7 +40,10 @@ build-dev:
     - /^hotfix.*$/
 
 test-models-balance:
+  image: postgres:latest
   stage: test
+  services:
+    - postgres:latest
   cache:
     paths:
       - deps/
@@ -50,7 +56,10 @@ test-models-balance:
     - connect-db
 
 build-prod:
+  image: postgres:latest
   stage: build
+  services:
+    - postgres:latest
   cache:
     paths:
       - deps/

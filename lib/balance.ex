@@ -108,7 +108,6 @@ defmodule Balance do
   alias Balance.Models.Player
   require Logger
 
-
   @doc """
   Read a file in json format and return a list of players
   """
@@ -133,18 +132,22 @@ defmodule Balance do
     end)
   end
 
+  @doc """
+  Save the data into players.json file
+  """
   def save(result) do
     case result do
-      {:ok, players} -> 
+      {:ok, players} ->
         case Json.Parser.encode(players) do
           {:ok, result} ->
-            File.write("players.json", result , [:binary])
+            File.write("players.json", result, [:binary])
+
           {:error, result} ->
             {:error, result}
         end
+
       {:error, data} ->
         {:error, data}
     end
   end
-
 end

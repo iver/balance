@@ -5,5 +5,5 @@ config :balance, Balance.Repo,
   database: System.get_env("POSTGRES_DB") || "balance_test",
   username: System.get_env("POSTGRES_USER") || "balance_test",
   password: System.get_env("POSTGRES_PASSWORD") || "balance",
-  hostname: System.get_env("POSTGRES_HOST") || "postgres",
+  hostname: System.get_env("POSTGRES_HOST") || "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

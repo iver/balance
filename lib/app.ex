@@ -26,6 +26,18 @@ defmodule App do
 
   def run({:text, data}) do
     IO.puts("Not implemented yet! ... file: #{data}")
+    settings = Balance.Settings.load()
+
+    case Team.extract(data) do
+      {:ok, players} ->
+        players
+        |> Team.export()
+        |> Balance.save()
+        |> IO.puts()
+
+      :error ->
+        {:error, "The text couldn't parse"}
+    end
   end
 
   def run({:help, true}) do

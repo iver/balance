@@ -5,10 +5,17 @@ set -o nounset
 set -o pipefail
 
 under_linux(){
-  # TODO: Create logic
+  apt-get update
+  apt-get -y install postgresql-client
+  wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb \
+    && sudo dpkg -i erlang-solutions_1.0_all.deb
+  apt-get update
+  apt-get install esl-erlang
+  apt-get install elixir
 }
 under_osx(){
-  # TODO: Create logic
+  brew update
+  brew install elixir
 }
 
 install(){

@@ -19,20 +19,22 @@ defmodule App do
     filename
     |> Balance.read_file()
     |> Balance.disperse(settings)
-    |> Team.export()
+    |> Balance.encode_players()
     |> Balance.save()
+    |> Balance.normalize()
     |> IO.puts()
   end
 
   def run({:text, data}) do
-    IO.puts("Not implemented yet! ... file: #{data}")
+    IO.puts("\nResult: \n\t")
     settings = Balance.Settings.load()
 
     case Team.extract(data) do
       {:ok, players} ->
         players
-        |> Team.export()
-        |> Balance.save()
+        |> Balance.disperse(settings)
+        |> Balance.encode_players()
+        |> Balance.normalize()
         |> IO.puts()
 
       :error ->

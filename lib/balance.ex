@@ -133,21 +133,69 @@ defmodule Balance do
   end
 
   @doc """
-  Save the data into players.json file
-  """
-  def save(result) do
-    case result do
-      {:ok, players} ->
-        case Json.Parser.encode(players) do
-          {:ok, result} ->
-            File.write("players.json", result, [:binary])
+  Prepare players to export as string
 
-          {:error, result} ->
-            {:error, result}
-        end
+  ## Example
+
+     iex> players = [%Balance.Models.Players{
+     ...>   name: "Juanita",
+     ...>   level: "A",
+     ...>   goals: 15,
+     ...>   fixed: 10000,
+     ...>   bonus: 5000,
+     ...>   team: "rojo",
+     ...>   total: 15000
+     ...> }]
+     iex> encode_players(players)
+     [{
+     "nombre":"Juanita",
+     "nivel":"A",
+     "goles":15,
+     "sueldo":10000,
+     "bono":5000,
+     "sueldo_completo":15000,
+     "equipo":"rojo"
+     }]
+
+  """
+  def encode_players(players) do
+    case Team.export(players) do
+      {:ok, players} ->
+        Json.Parser.encode(players)
 
       {:error, data} ->
+        Logger.debug("ERROR: updating players #{inspect(data)}")
         {:error, data}
     end
+  end
+
+  @doc """
+  Save the data into players.json file
+  """
+  def save({:ok, players}) do
+    File.write("players.json", players, [:binary])
+  end
+
+  @doc """
+  Save any data for diagnostic purpose.
+  """
+  def save(data) do
+    Logger.debug("Save any data -> #{inspect(data)}")
+    data
+  end
+
+  @doc """
+  Extract result and define if there is an error
+  """
+  def normalize({:ok, players}), do: players
+
+  def normalize({:error, error_info}) do
+    Logger.debug("#{inspect(error_info)}")
+    error_info
+  end
+
+  def normalize(data) do
+    Logger.debug("#{inspect(data)}")
+    data
   end
 end

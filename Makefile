@@ -17,7 +17,7 @@ help:
 	@echo -e "\tmake clean\t Elimina los archivos generados por la compilación"
 
 install:
-	@echo "Not implemented yet!"
+	./bash/install.sh
 
 get:
 	mix local.hex --force;

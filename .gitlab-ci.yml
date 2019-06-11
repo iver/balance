@@ -14,9 +14,6 @@ stages:
   - build
   - test
 
-before_script:
-  - apt-get update && apt-get -y install postgresql-client
-
 connect-db:
   image: postgres:latest
   stage: connect

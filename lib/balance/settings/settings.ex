@@ -16,6 +16,19 @@ defmodule Balance.Settings do
 
   @doc """
   Load available settings and returns a %Settings{} struct
+
+  ## Example
+
+  ```elixir
+
+  iex> %Balance.Settings{goals: goals, bonus: bonus} = Balance.Settings.load()
+  iex> is_list(bonus)
+  true
+  iex> is_list(goals)
+  true
+
+  ```
+
   """
   @spec load() :: Balance.Settings.t()
   def load do

@@ -135,7 +135,6 @@ defmodule Balance do
   @doc """
   Prepare players to export as string
 
-
   """
   def encode_players(players) do
     case Team.export(players) do
@@ -168,11 +167,36 @@ defmodule Balance do
   """
   def normalize({:ok, players}), do: players
 
+  @doc """
+  Extract tuple error value from a tuple like {:error, value}
+
+  ## Example
+
+  ```elixir
+
+  iex> {:error, info} = {:error, "Error value"}
+  iex> Balance.normalize({:error, info})
+  "Error value"
+
+  ```
+
+  """
   def normalize({:error, error_info}) do
     Logger.debug("#{inspect(error_info)}")
     error_info
   end
 
+  @doc """
+  Default function when `data` parameter is not a tuple
+
+  ```elixir
+
+  iex> Balance.normalize("")
+  ""
+
+  ```
+
+  """
   def normalize(data) do
     Logger.debug("#{inspect(data)}")
     data

@@ -38,6 +38,7 @@ doc: compile
 test: MIX_ENV=test
 test: init
 	mix test --trace --exclude lib/balance/repo.ex
+	mix test --trace --only lib/balance/repo.ex
 	mix coveralls
 
 compile: clean get

@@ -4,18 +4,6 @@ defmodule Json.Parser do
   """
 
   @doc """
-  Decode a model list
-  """
-  @spec decode([%{}], %{}) :: %{}
-  def decode(list, value) when is_list(list) do
-    Enum.reduce(list, [], fn item, acc ->
-      [
-        Json.Parser.decode!(item, value) | acc
-      ]
-    end)
-  end
-
-  @doc """
   Decode json string
 
   ## Example
@@ -69,6 +57,18 @@ defmodule Json.Parser do
 
   @doc """
   Encode a value to JSON, raises an exception on error.
+
+  ## Example
+
+  ```elixir
+
+  iex> expected = ~s([{"percent":0.5,"kind":"team"},{"percent":0.5,"kind":"individual"}])
+  iex> bonus = [%Balance.Settings.Bonus{kind: "team", percent: 0.5},%Balance.Settings.Bonus{kind: "individual",percent: 0.5}]
+  iex> {:ok, result} = Json.Parser.encode(bonus)
+  iex> expected == result
+  true
+
+  ```
 
   """
   def encode(bonus) do

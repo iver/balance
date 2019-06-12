@@ -4,12 +4,12 @@ defmodule Team do
   """
 
   @doc """
-  Convert a json string to player list as [%Player{}]
+  Convert a json string to player list as `[%Balance.Models.Player{}]`
 
   """
   def extract(data) when is_bitstring(data) do
-    with {:ok, json} <- Poison.decode(data),
-         {:ok, players} <- extract(json) do
+    with {:ok, list} <- Json.Parser.decode(data),
+         {:ok, players} <- extract(list) do
       {:ok, players}
     else
       :error -> {:error, "The data couldn't parse"}
@@ -39,8 +39,8 @@ defmodule Team do
 
     {:ok, result}
   end
-  def export(players) do
 
+  def export(players) do
     result =
       Enum.reduce(players, [], fn player, list ->
         [

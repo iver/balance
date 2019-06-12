@@ -12,7 +12,12 @@ defmodule Balance.MixProject do
       aliases: aliases(),
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
       escript: escript(),
 
       # Docs
@@ -21,7 +26,7 @@ defmodule Balance.MixProject do
       home_url: "http://iver.mx/doc/",
       docs: [
         main: "Balance",
-        logo: "assets/balance.png",
+        logo: "assets/logo.png",
         markdown_processor: ExDocMakeup,
         extras: ["README.md"]
       ]
@@ -63,8 +68,8 @@ defmodule Balance.MixProject do
     [
       {:ecto_sql, "~> 3.0"},
       {:postgrex, "~> 0.14"},
-      {:ex_doc, "~> 0.20.1", only: :dev, runtime: false},
-      {:ex_doc_makeup, "~> 0.1.0", only: :dev},
+      {:ex_doc, "~> 0.20.1", runtime: false},
+      {:ex_doc_makeup, "~> 0.1.0"},
       {:poison, "~> 4.0"},
       {:credo, "~> 1.0.5", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.11", only: :test},
@@ -82,7 +87,7 @@ defmodule Balance.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      "ecto.setup": ["run priv/repo/info.exs", "ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       "ecto.reset.test": ["ecto.drop", "ecto.create", "ecto.migrate"],
       test: ["ecto.reset.test --quiet", "ecto.migrate", "test"]

@@ -17,7 +17,7 @@ help:
 	@echo -e "\tmake clean\t Elimina los archivos generados por la compilación"
 
 install:
-	@echo "Not implemented yet!"
+	./bash/install.sh
 
 get:
 	mix local.hex --force;
@@ -37,7 +37,7 @@ doc: compile
 
 test: MIX_ENV=test
 test: init
-	mix test
+	mix test --trace --exclude lib/balance/repo.ex
 	mix coveralls
 
 compile: clean get
@@ -47,7 +47,7 @@ compile: clean get
 
 release: MIX_ENV=prod
 release: compile
-	@echo "Not implemented yet!"
+	mix escript.build
 
 deploy:
 	@echo "Not implemented yet!"

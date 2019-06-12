@@ -1,4 +1,4 @@
-image: trenpixster/elixir:latest
+image: elixir:1.8
 
 services:
   - postgres:latest
@@ -14,9 +14,6 @@ stages:
   - build
   - test
 
-before_script:
-  - apt-get update && apt-get -y install postgresql-client
-
 connect-db:
   image: postgres:latest
   stage: connect
@@ -26,8 +23,6 @@ connect-db:
 
 build-dev:
   stage: build
-  services:
-    - postgres:latest
   cache:
     paths:
       - deps/
@@ -46,8 +41,6 @@ build-dev:
 
 test-models-balance:
   stage: test
-  services:
-    - postgres:latest
   cache:
     paths:
       - deps/
@@ -61,8 +54,6 @@ test-models-balance:
 
 build-prod:
   stage: build
-  services:
-    - postgres:latest
   cache:
     paths:
       - deps/

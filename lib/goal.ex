@@ -74,9 +74,9 @@ defmodule Goal do
 
   ```elixir
 
-     iex> settings = Balance.Repo.list_goals_settings()
+     iex> settings = [%Balance.Settings.Goal{ goals: 5,team: "all"}, %Balance.Settings.Goal{ goals: 10, team: "all"}, %Balance.Settings.Goal{goals: 15, team: "all" }, %Balance.Settings.Goal{ goals: 20, team: "all" }]
      iex> Goal.count(settings, "all")
-     25
+     50
 
      iex> players = [%Balance.Models.Player{name: "Juan", goals: 10, team: "rojo"},
      ...> %Balance.Models.Player{name: "Pablo", goals: 5, team: "rojo"},

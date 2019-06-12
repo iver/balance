@@ -5,7 +5,8 @@ defmodule Bonus do
   ## Example
 
   ```elixir
-     iex> settings = Balance.Repo.list_bonus_settings()
+
+     iex> settings = [%Balance.Settings.Bonus{kind: "team", percent: 0.5},%Balance.Settings.Bonus{kind: "individual",percent: 1.0}]
      iex> Bonus.percentage(settings)
      %{percent: %{individual: 1.0, team: 0.5}}
 

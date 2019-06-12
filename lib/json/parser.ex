@@ -22,7 +22,8 @@ defmodule Json.Parser do
 
   ```elixir
 
-  iex> Json.Parser.decode("{\"nombre\":\"Juan Perez\", \"nivel\":\"C\", \"goles\":10, \"sueldo\":50000, \"bono\":25000, \"sueldo_completo\":null, \"equipo\":\"rojo\"}")
+  iex> data = ~s({"nombre":"Juan Perez", "nivel":"C", "goles":10, "sueldo":50000, "bono":25000, "sueldo_completo":null, "equipo":"rojo"})
+  iex> Json.Parser.decode(data)
   {:ok,
   %{
   "bono" => 25000,

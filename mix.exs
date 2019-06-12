@@ -26,7 +26,7 @@ defmodule Balance.MixProject do
       home_url: "http://iver.mx/doc/",
       docs: [
         main: "Balance",
-        logo: "assets/balance.png",
+        logo: "assets/logo.png",
         markdown_processor: ExDocMakeup,
         extras: ["README.md"]
       ]

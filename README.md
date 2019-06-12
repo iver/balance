@@ -258,3 +258,11 @@ $ make release
 ```
 
 Dont' forget that when you run test the default environment is `test`. 
+
+#### IMPORTANT
+
+If you wish to reset your database you can type:
+
+```bash
+$ MIX_ENV=dev mix ecto.reset
+```

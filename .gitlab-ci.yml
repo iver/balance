@@ -23,8 +23,6 @@ connect-db:
 
 build-dev:
   stage: build
-  services:
-    - postgres:latest
   cache:
     paths:
       - deps/
@@ -43,8 +41,6 @@ build-dev:
 
 test-models-balance:
   stage: test
-  services:
-    - postgres:latest
   cache:
     paths:
       - deps/

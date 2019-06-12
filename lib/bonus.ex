@@ -44,7 +44,7 @@ defmodule Bonus do
   end
 
   def update_settings(settings) do
-    case Json.Parser.decode(settings, %Balance.Settings.Bonus{}) do
+    case Json.Parser.decode(settings) do
       {:ok, bonus} ->
         case Balance.Repo.create_bonus(bonus) do
           {:ok, bonus} -> bonus

@@ -23,13 +23,16 @@ connect-db:
 
 build-dev:
   stage: build
+  variables:
+    MIX_ENV: test
   cache:
     paths:
       - deps/
       - _build/
   script:
-    - MIX_ENV=test make init
-    - MIX_ENV=test make compile
+    - make init
+    - make compile
+    - mix coveralls
   environment:
     name: develop
   only:
@@ -54,13 +57,15 @@ test-models-balance:
 
 build-prod:
   stage: build
+  variables:
+    MIX_ENV: prod
   cache:
     paths:
       - deps/
       - _build/
   script:
-    - MIX_ENV=test make init
-    - MIX_ENV=test make compile
+    - make init
+    - make compile
   environment:
     name: production
   only:

@@ -28,6 +28,7 @@ before_script:
 script:
 - make compile
 - make test
+- MIX_ENV=test mix coveralls.travis
 
 notifications:
   email: false

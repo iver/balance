@@ -25,6 +25,8 @@ defmodule Balance.Settings.Bonus do
 
   ## Examples
 
+  ```elixir
+
      iex> alias Balance.Settings.Bonus
      iex> change = Bonus.changeset(%Bonus{}, %{percent: 1, kind: "team"})
      iex> Bonus.validate_kind(change)
@@ -34,6 +36,8 @@ defmodule Balance.Settings.Bonus do
      iex> change = Bonus.changeset(%Bonus{}, %{percent: 1, kind: "invalid team"})
      iex> Bonus.validate_kind(change)
      #Ecto.Changeset<action: nil, changes: %{kind: \"invalid team\", percent: 1.0}, errors: [kind: {\"invalid kind name\", []}, kind: {\"invalid kind name\", []}], data: #Balance.Settings.Bonus<>, valid?: false>
+
+  ```
 
   """
   def validate_kind(changeset) do

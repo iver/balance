@@ -13,8 +13,8 @@ defmodule Screen do
   end
 
   defp parse_args(args) do
-    switches = [file: :string, help: :boolean, version: :boolean, text: :string]
-    aliases = [f: :file, t: :text, h: :help, v: :version]
+    switches = [file: :string, text: :string, bonus: :string, help: :boolean, version: :boolean]
+    aliases = [f: :file, t: :text, b: :bonus, h: :help, v: :version]
 
     OptionParser.parse(args, switches: switches, aliases: aliases)
   end

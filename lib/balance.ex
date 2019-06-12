@@ -135,27 +135,6 @@ defmodule Balance do
   @doc """
   Prepare players to export as string
 
-  ## Example
-
-     iex> players = [%Balance.Models.Players{
-     ...>   name: "Juanita",
-     ...>   level: "A",
-     ...>   goals: 15,
-     ...>   fixed: 10000,
-     ...>   bonus: 5000,
-     ...>   team: "rojo",
-     ...>   total: 15000
-     ...> }]
-     iex> encode_players(players)
-     [{
-     "nombre":"Juanita",
-     "nivel":"A",
-     "goles":15,
-     "sueldo":10000,
-     "bono":5000,
-     "sueldo_completo":15000,
-     "equipo":"rojo"
-     }]
 
   """
   def encode_players(players) do

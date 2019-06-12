@@ -6,7 +6,7 @@ defmodule Goal do
     Logger.debug("percentage!(#{players}, #{goals})")
 
     if players > 0 && goals > 0 do
-      result = (players / goals)
+      result = players / goals
       {:ok, result}
     else
       {:error, "Goals must be greather than zero"}
@@ -18,7 +18,7 @@ defmodule Goal do
 
   ## Example
 
-  ```
+  ```elixir
 
      iex> player = %Balance.Models.Player{goals: 9, level: "C"}
      iex> goal_settings = [%Balance.Settings.Goal{level: "C", goals: 10, team: "all"}]
@@ -41,7 +41,7 @@ defmodule Goal do
 
   ## Example
 
-  ```
+  ```elixir
 
      iex> players = [%Balance.Models.Player{goals: 9, team: "all"}, %Balance.Models.Player{goals: 10, team: "all"}]
      iex> goal_settings = [%Balance.Settings.Goal{level: "C", goals: 10, team: "all"}, %Balance.Settings.Goal{level: "A", goals: 10, team: "all"}]
@@ -55,11 +55,13 @@ defmodule Goal do
     players = Goal.count(players, team)
     goals = Goal.count(goals_settings, team)
     Logger.debug("-- Percentage -- team: #{team}")
+
     case percentage(%{players: players, goals: goals}) do
       {:ok, result} ->
         %{team: result}
+
       {:error, result} ->
-        Logger.info "Error: #{result}"
+        Logger.info("Error: #{result}")
         %{team: result}
     end
   end
@@ -70,7 +72,7 @@ defmodule Goal do
 
   ## Examples
 
-  ```
+  ```elixir
 
      iex> settings = Balance.Repo.list_goals_settings()
      iex> Goal.count(settings, "all")

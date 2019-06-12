@@ -9,9 +9,10 @@
   - [Checking the installed version of Elixir](#elixir)
   - [Technical Documentation](#doc)
 * [Clone project](#clone)
-* [Howto execute](#exec) 
-* [Howto run test](#test)
+* [How to execute](#exec) 
+* [How to run test](#test)
 * [The executable](#binary)
+* [Environments](#env)
 
 <a name="installation"></a>
 
@@ -111,27 +112,8 @@ iex(2)>  data = Balance.read_file(filename)
     team: "rojo",
     total: nil,
     variable: 0
-  },
-  %Balance.Models.Player{
-    bonus: 10000,
-    fixed: 20000,
-    goals: 7,
-    level: "A",
-    name: "Cosme Fulanito",
-    team: "azul",
-    total: nil,
-    variable: 0
-  },
-  %Balance.Models.Player{
-    bonus: 30000,
-    fixed: 100000,
-    goals: 30,
-    level: "Cuauh",
-    name: "EL Cuauh",
-    team: "azul",
-    total: nil,
-    variable: 0
-  },
+  }
+...,
   %Balance.Models.Player{
     bonus: 25000,
     fixed: 50000,
@@ -151,92 +133,9 @@ iex(3)> settings = Balance.Settings.load()
       id: 1,
       kind: "team",
       percent: 0.5
-    },
-    %Balance.Settings.Bonus{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "bonus_settings">,
-      id: 2,
-      kind: "individual",
-      percent: 0.5
     }
-  ],
-  goals: [
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 5,
-      id: 1,
-      level: "A",
-      team: "all"
-    },
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 10,
-      id: 2,
-      level: "B",
-      team: "all"
-    },
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 15,
-      id: 3,
-      level: "C",
-      team: "all"
-    },
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 20,
-      id: 4,
-      level: "Cuauh",
-      team: "all"
-    },
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 5,
-      id: 5,
-      level: "A",
-      team: "rojo"
-    },
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 10,
-      id: 6,
-      level: "B",
-      team: "rojo"
-    },
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 15,
-      id: 7,
-      level: "C",
-      team: "rojo"
-    },
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 20,
-      id: 8,
-      level: "Cuauh",
-      team: "rojo"
-    },
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 5,
-      id: 9,
-      level: "A",
-      team: "azul"
-    },
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 10,
-      id: 10,
-      level: "B",
-      team: "azul"
-    },
-    %Balance.Settings.Goal{
-      __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
-      goals: 15,
-      id: 11,
-      level: "C",
-      team: "azul"
-    },
+...
+,
     %Balance.Settings.Goal{
       __meta__: #Ecto.Schema.Metadata<:loaded, "goal_settings">,
       goals: 20,
@@ -257,68 +156,9 @@ iex(4)> json = Balance.calculate(data, settings)
     team: "rojo",
     total: "63083.33",
     variable: 0
-  },
-  %Balance.Models.Player{
-    bonus: 30000,
-    fixed: 100000,
-    goals: 30,
-    level: "Cuauh",
-    name: "EL Cuauh",
-    team: "azul",
-    total: "126100.00",
-    variable: 0
-  },
-  %Balance.Models.Player{
-    bonus: 10000,
-    fixed: 20000,
-    goals: 7,
-    level: "A",
-    name: "Cosme Fulanito",
-    team: "azul",
-    total: "28700.00",
-    variable: 0
-  },
-  %Balance.Models.Player{
-    bonus: 15000,
-    fixed: 30000,
-    goals: 9,
-    level: "B",
-    name: "El Rulo",
-    team: "rojo",
-    total: "39600.00",
-    variable: 0
   }
-]
-iex(5)> players = Team.export(json)             
-{:ok,
- [
-   %{
-     bono: 15000,
-     equipo: "rojo",
-     goles: 9,
-     nivel: "B",
-     nombre: "El Rulo",
-     sueldo: 30000,
-     sueldo_completo: "39600.00"
-   },
-   %{
-     bono: 10000,
-     equipo: "azul",
-     goles: 7,
-     nivel: "A",
-     nombre: "Cosme Fulanito",
-     sueldo: 20000,
-     sueldo_completo: "28700.00"
-   },
-   %{
-     bono: 30000,
-     equipo: "azul",
-     goles: 30,
-     nivel: "Cuauh",
-     nombre: "EL Cuauh",
-     sueldo: 100000,
-     sueldo_completo: "126100.00"
-   },
+  ...
+  ,
    %{
      bono: 25000, 
      equipo: "rojo",
@@ -347,6 +187,32 @@ $ mix test --trace
 
 ## The executable
 
+There are a few forms to build an executable:
+
+* Using Makefile. The Makefile have its own help.
+
+```bash
+$ make
+Ejercicio de Resuelve. 
+
+Comandos disponibles:
+	make install	 Instala el proyecto
+	make init	 inicializa la base de datos
+	make debug	 Ejecuta el proyecto en modo debug
+	make compile	 Compila el proyecto
+	make test	 Ejecuta las pruebas del proyecto
+	make release	 Compila el proyecto y genera el paquete a subir al servidor
+	make deploy	 Despliega el paquete generado en el servidor
+	make clean	 Elimina los archivos generados por la compilación
+```
+
+* Using mix. 
+
+```
+$ mix escript.build
+Generated escript balance with MIX_ENV=dev
+```
+
 After the build was done you can use the binary:
 
 ```
@@ -373,5 +239,22 @@ OPTIONS
 	 -v | --version 	Shows the gcli version.
 ```
 
+<a name="env"></a>
 
+## Environments
 
+By default we use `dev` environment as you could see in the previous section. When using the default settings the binary file could show more information that we don't need.
+
+Is better to build as production release and you can do it with:
+
+```bash
+$ MIX_ENV=prod mix escript.build
+```
+
+If you wish you can do the same thing with the Makefile:
+
+```bash
+$ make release
+```
+
+Dont' forget that when you run test the default environment is `test`. 

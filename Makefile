@@ -47,7 +47,7 @@ compile: clean get
 
 release: MIX_ENV=prod
 release: compile
-	@echo "Not implemented yet!"
+	mix escript.build
 
 deploy:
 	@echo "Not implemented yet!"

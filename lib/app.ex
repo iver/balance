@@ -42,6 +42,14 @@ defmodule App do
     end
   end
 
+  def run({:bonus, data}) do
+    IO.puts("\nSaving bonus settings:\n")
+
+    data
+    |> Bonus.update_settings()
+    |> IO.puts()
+  end
+
   def run({:help, true}) do
     Balance.Help.use()
   end

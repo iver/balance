@@ -4,9 +4,49 @@ defmodule Json.Parser do
   """
 
   @doc """
+  Decode a model list
+  """
+  @spec decode([%{}], %{}) :: %{}
+  def decode(list, value) when is_list(list) do
+    Enum.reduce(list, [], fn item, acc ->
+      [
+        Json.Parser.decode!(item, value) | acc
+      ]
+    end)
+  end
+
+  @doc """
+  Decode json string
+
+  ## Example
+
+  ```elixir
+
+  iex> Json.Parser.decode("{\"nombre\":\"Juan Perez\", \"nivel\":\"C\", \"goles\":10, \"sueldo\":50000, \"bono\":25000, \"sueldo_completo\":null, \"equipo\":\"rojo\"}")
+  {:ok,
+  %{
+  "bono" => 25000,
+  "equipo" => "rojo",
+  "goles" => 10,
+  "nivel" => "C",
+  "nombre" => "Juan Perez",
+  "sueldo" => 50000,
+  "sueldo_completo" => nil
+  }}
+
+  ```
+
+  """
+  def decode(json) do
+    Poison.decode(json)
+  end
+
+  @doc """
   Decode JSON to a value, raises an exception on error.
 
   ## Example
+
+  ```elixir
 
      iex> Json.Parser.decode!(~s({"percent": 0.5, "kind": "individual"}), %Balance.Settings.Bonus{})
      %Balance.Settings.Bonus{
@@ -14,6 +54,8 @@ defmodule Json.Parser do
      kind: \"individual\",
      percent: 0.5
      }
+
+  ```
 
   """
   def decode!(params, %_{} = value) do

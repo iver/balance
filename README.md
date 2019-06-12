@@ -1,15 +1,15 @@
 # Balance
-[![Travis Build Status](https://travis-ci.org/iver/balance.svg?branch=develop)](https://travis-ci.org/iver/balance)
-[![Gitlab Build Status](https://gitlab.com/Iver14/balance/badges/develop/build.svg)](https://gitlab.com/Iver14/balance/badges/develop/build.svg)
-[![Coverage Status](https://coveralls.io/repos/github/iver/balance/badge.svg?branch=develop)](https://coveralls.io/github/iver/balance?branch=develop)
+[![Travis Build Status](https://travis-ci.org/iver/balance.svg?branch=master)](https://travis-ci.org/iver/balance)
+[![Gitlab Build Status](https://gitlab.com/Iver14/balance/badges/master/build.svg)](https://gitlab.com/Iver14/balance/badges/master/build.svg)
+[![Coverage Status](https://coveralls.io/repos/github/iver/balance/badge.svg?branch=master)](https://coveralls.io/github/iver/balance?branch=master)
 
-![Balance Logo](assets/balance.png)
+![Balance Logo](assets/logo.png)
 
 * [Installation](#installation)
   - [Checking the installed version of Elixir](#elixir)
   - [Technical Documentation](#doc)
 * [Clone project](#clone)
-* [How to execute](#exec) 
+* [How to execute](#exec)
 * [How to run test](#test)
 * [The executable](#binary)
 * [Environments](#env)
@@ -79,7 +79,7 @@ Because one issue is can configure your own team with different goal settings an
 If you wish to develop, test or run the project it is necessary to clone the project:
 
 ```
-# From gitlab  
+# From gitlab
 $ git clone git@gitlab.com:iver14/balance.git ~/Workspace/balance
 
 # From github
@@ -160,7 +160,7 @@ iex(4)> json = Balance.calculate(data, settings)
   ...
   ,
    %{
-     bono: 25000, 
+     bono: 25000,
      equipo: "rojo",
      goles: 10,
      nivel: "C",
@@ -193,7 +193,7 @@ There are a few forms to build an executable:
 
 ```bash
 $ make
-Ejercicio de Resuelve. 
+Ejercicio de Resuelve.
 
 Comandos disponibles:
 	make install	 Instala el proyecto
@@ -206,7 +206,7 @@ Comandos disponibles:
 	make clean	 Elimina los archivos generados por la compilación
 ```
 
-* Using mix. 
+* Using mix.
 
 ```
 $ mix escript.build
@@ -231,7 +231,7 @@ AUTHOR
 DESCRIPTION
 	 Calculate Resuelve FC players' salary.
 
-    
+
 OPTIONS
 	 -f | --file <file_json> 		Parse json file named <file_json>.
 	 -t | --text <text_json> 		Parse json text.
@@ -257,7 +257,7 @@ If you wish you can do the same thing with the Makefile:
 $ make release
 ```
 
-Dont' forget that when you run test the default environment is `test`. 
+Dont' forget that when you run test the default environment is `test`.
 
 #### IMPORTANT
 

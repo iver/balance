@@ -32,7 +32,6 @@ build-dev:
   script:
     - make init
     - make compile
-    - mix coveralls
   environment:
     name: develop
   only:
@@ -50,6 +49,7 @@ test-models-balance:
       - _build/
   script:
     - MIX_ENV=test make test
+    - MIX_ENV=test mix coveralls
   dependencies:
     - build-dev
     - build-prod

@@ -16,7 +16,7 @@ defmodule Balance.Repo do
 
    ```elixir
 
-     iex> Repo.list_bonus_settings()
+     iex> Balance.Repo.list_bonus_settings()
      [%Balance.Settings.Bonus{}]
 
   ```
@@ -36,7 +36,7 @@ defmodule Balance.Repo do
      iex> Balance.Repo.create_bonus(%{percent: 0.5, kind: "individual"})
      {:ok, %Balance.Settings.Bonus{}}
 
-     iex> Repo.create_bonus(%{percent: 0.3, kind: "other_data"})
+     iex> Balance.Repo.create_bonus(%{percent: 0.3, kind: "other_data"})
      {:error, %Ecto.Changeset{}}
 
   ```
@@ -55,12 +55,12 @@ defmodule Balance.Repo do
 
   ```elixir
 
-     iex> bonus = Repo.get_by(id: 1)
-     iex> Repo.update_bonus(bonus, %{percent: 0.4})
+     iex> bonus = Balance.Repo.get_by(id: 1)
+     iex> Balance.Repo.update_bonus(bonus, %{percent: 0.4})
      {:ok, %Balance.Settings.Bonus{percent: 0.4}}
 
-     iex> bonus = Repo.get_by(id: 1)
-     iex> Repo.update_bonus(bonus, %{percent: -1})
+     iex> bonus = Balance.Repo.get_by(id: 1)
+     iex> Balance.Repo.update_bonus(bonus, %{percent: -1})
      {:error, %Ecto.Changeset{}}
 
   ```
@@ -79,12 +79,12 @@ defmodule Balance.Repo do
 
   ```elixir
 
-     iex> bonus = Repo.get_by(id: 1)
-     iex> Repo.delete_bonus(bonus)
+     iex> bonus = Balance.Repo.get_by(id: 1)
+     iex> Balance.Repo.delete_bonus(bonus)
      {:ok, %Balance.Settings.Bonus{}}
 
-     iex> bonus = Repo.get_by(id: 5)
-     iex> Repo.delete_bonus(bonus)
+     iex> bonus = Balance.Repo.get_by(id: 5)
+     iex> Balance.Repo.delete_bonus(bonus)
      {:error, %Ecto.Changeset{}}
 
   ```
@@ -101,7 +101,7 @@ defmodule Balance.Repo do
 
   ```elixir
 
-  iex> Repo.list_goals_settings()
+  iex> Balance.Repo.list_goals_settings()
   [%Balance.Settings.Goal{}]
 
   ```
@@ -118,10 +118,10 @@ defmodule Balance.Repo do
 
   ```elixir
 
-     iex> Repo.create_goal(%{level: "D", goals: 12, team: "juniors"})
+     iex> Balance.Repo.create_goal(%{level: "D", goals: 12, team: "juniors"})
      {:ok, %Balance.Settings.Goal{}}
 
-     iex> Repo.create_goal(%{level: 1, goals: 10, team: "team"})
+     iex> Balance.Repo.create_goal(%{level: 1, goals: 10, team: "team"})
      {:error, %Ecto.Changeset{}}
 
   ```
@@ -140,12 +140,12 @@ defmodule Balance.Repo do
 
   ```elixir
 
-     iex> goal = Repo.get_by(id: 1)
-     iex> Repo.update_goal(goal, %{level: "A", goals: 12, team: "rojo"})
+     iex> goal = Balance.Repo.get_by(id: 1)
+     iex> Balance.Repo.update_goal(goal, %{level: "A", goals: 12, team: "rojo"})
      {:ok, %Balance.Settings.Goal{}}
 
-     iex> goal = Repo.get_by(id: 1)
-     iex> Repo.update_goal(goal, %{level: "X", goals: 19, team: "blanco"})
+     iex> goal = Balance.Repo.get_by(id: 1)
+     iex> Balance.Repo.update_goal(goal, %{level: "X", goals: 19, team: "blanco"})
      {:error, %Ecto.Changeset{}}
 
   ```
@@ -164,12 +164,12 @@ defmodule Balance.Repo do
 
   ```elixir
 
-     iex> goal = Repo.get_by(id: 1)
-     iex> Repo.delete_goal(goal)
+     iex> goal = Balance.Repo.get_by(id: 1)
+     iex> Balance.Repo.delete_goal(goal)
      {:ok, %Balance.Settings.Goal{}}
 
-     iex> goal = Repo.get_by(id: 1)
-     iex> Repo.delete_goal(goal)
+     iex> goal = Balance.Repo.get_by(id: 1)
+     iex> Balance.Repo.delete_goal(goal)
      {:error, %Ecto.Changeset{}}
 
   ```

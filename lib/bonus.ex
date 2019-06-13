@@ -45,12 +45,18 @@ defmodule Bonus do
   end
 
   def update_settings(settings) do
+    require Logger
+
     case Json.Parser.decode(settings) do
-      {:ok, bonus} ->
-        case Balance.Repo.create_bonus(bonus) do
-          {:ok, bonus} -> bonus
-          {:error, error} -> error
-        end
+      {:ok, list} ->
+        Enum.each(list, fn item ->
+          Logger.info("Data: #{inspect(item)} \n")
+        end)
+
+      # case Balance.Repo.create_bonus(bonus) do
+      #   {:ok, bonus} -> bonus
+      #   {:error, error} -> error
+      # end
 
       {:error, error_info} ->
         error_info

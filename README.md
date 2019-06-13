@@ -1,7 +1,8 @@
 # Balance
-[![Travis Build Status](https://travis-ci.org/iver/balance.svg?branch=master)](https://travis-ci.org/iver/balance)
-[![Gitlab Build Status](https://gitlab.com/Iver14/balance/badges/master/build.svg)](https://gitlab.com/Iver14/balance/badges/master/build.svg)
-[![Coverage Status](https://coveralls.io/repos/github/iver/balance/badge.svg?branch=master)](https://coveralls.io/github/iver/balance?branch=master)
+[![Travis Build Status](https://travis-ci.org/iver/balance.svg?branch=develop)](https://travis-ci.org/iver/balance)
+[![Gitlab Build Status](https://gitlab.com/Iver14/balance/badges/develop/build.svg)](https://gitlab.com/Iver14/balance/badges/develop/build.svg)
+[![Coverage Status](https://coveralls.io/repos/github/iver/balance/badge.svg?branch=develop)](https://coveralls.io/github/iver/balance?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/gitlab/Iver14/balance/badge.svg?branch=develop)](https://coveralls.io/gitlab/Iver14/balance?branch=develop)
 
 ![Balance Logo](assets/logo.png)
 

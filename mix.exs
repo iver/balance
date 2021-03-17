@@ -68,7 +68,7 @@ defmodule Balance.MixProject do
     [
       {:ecto_sql, "~> 3.0"},
       {:postgrex, "~> 0.14"},
-      {:ex_doc, "~> 0.20.1", runtime: false},
+      {:ex_doc, "~> 0.24.0", runtime: false},
       {:ex_doc_makeup, "~> 0.1.0"},
       {:poison, "~> 4.0"},
       {:credo, "~> 1.0.5", only: [:dev, :test], runtime: false},

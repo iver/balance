@@ -43,12 +43,9 @@ defmodule Balance.Settings.Bonus do
 
   """
   def validate_kind(changeset) do
-    kind = get_field(changeset, :kind)
-
-    if kind in @kinds do
-      changeset
-    else
-      add_error(changeset, :kind, "invalid kind name")
+    case get_field(changeset, :kind) do
+      kind when kind in @kinds -> changeset
+      _invalid -> add_error(changeset, :kind, "invalid kind name")
     end
   end
 end

@@ -66,14 +66,18 @@ defmodule Balance.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ecto_sql, "~> 3.0"},
-      {:postgrex, "~> 0.14"},
-      {:ex_doc, "~> 0.20.1", runtime: false},
-      {:ex_doc_makeup, "~> 0.1.0"},
-      {:poison, "~> 4.0"},
+      # code quality dependencies
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.3", only: [:dev], runtime: false},
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:excoveralls, "~> 0.11", only: :test},
-      {:dialyxir, "~> 1.3", only: [:dev], runtime: false}
+      {:makeup, "~> 1.1.0"},
+      {:makeup_elixir, "~> 0.14.0"},
+
+      # used in production
+      {:ecto_sql, "~> 3.0"},
+      {:poison, "~> 4.0"},
+      {:postgrex, "~> 0.14"}
     ]
   end
 

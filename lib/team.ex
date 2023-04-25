@@ -3,6 +3,9 @@ defmodule Team do
   Encapsula las tareas a realizar que están relacionadas con un equipo.
   """
 
+  alias Balance.Models
+  alias Balance.Parser
+
   @doc """
   Convierte una cadena de jugadores en formato JSON
   a una lista de tipo `[%Balance.Models.Player{}]`.
@@ -11,19 +14,15 @@ defmodule Team do
 
   """
   def extract(data) when is_bitstring(data) do
-    with {:ok, list} <- Json.Parser.decode(data),
-         {:ok, players} <- extract(list) do
-      {:ok, players}
-    else
-      :error -> {:error, "The data couldn't parse"}
-    end
+    {:ok, list} = Parser.decode(data)
+    extract(list)
   end
 
   def extract(players) do
     result =
       Enum.reduce(players, [], fn player, list ->
         [
-          %Balance.Models.Player{
+          %Models.Player{
             name: player["nombre"],
             level: player["nivel"],
             goals: player["goles"],

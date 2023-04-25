@@ -7,8 +7,9 @@ defmodule Balance.Salary do
 
   alias Balance.Models.Player
   alias Balance.Salary
+  alias Balance.Settings.Goal, as: GoalSettings
 
-  @spec bonus(Player.t(), Balance.t()) :: map()
+  @spec bonus(Player.t(), GoalSettings.t()) :: map()
   def bonus(player, goal_settings) do
     # settings %{percent: %{individual: individual, team: team}}
     percent = Bonus.percentage(goal_settings)

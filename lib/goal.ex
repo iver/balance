@@ -5,6 +5,7 @@ defmodule Goal do
   """
   require Logger
 
+  alias Balance.Models.Player
   alias Balance.Settings.Goal
 
   @spec percentage(number, number) :: map()

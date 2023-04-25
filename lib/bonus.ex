@@ -3,6 +3,7 @@ defmodule Bonus do
   Contiene funciones relacionadas al cálculo de bonificaciones.
   """
 
+  alias Balance.Parser
   alias Balance.Settings.Bonus
 
   @doc """
@@ -53,7 +54,7 @@ defmodule Bonus do
   def update_settings(settings) do
     require Logger
 
-    case Json.Parser.decode(settings) do
+    case Parser.decode(settings) do
       {:ok, list} ->
         # Enum.each(list, fn item ->
         #   Logger.info("Data: #{inspect(item)} \n")

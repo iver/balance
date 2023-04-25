@@ -110,7 +110,9 @@ defmodule Balance do
   require Logger
 
   alias Balance.Models.Player
+  alias Balance.Parser
   alias Balance.Salary
+  alias Balance.Settings
 
   @doc """
   Lee un archivo en formato JSON y regresa una lista de jugadores
@@ -143,7 +145,7 @@ defmodule Balance do
   def encode_players(players) do
     case Team.export(players) do
       {:ok, players} ->
-        Json.Parser.encode(players)
+        Parser.encode(players)
 
       {:error, data} ->
         Logger.debug("ERROR: updating players #{inspect(data)}")

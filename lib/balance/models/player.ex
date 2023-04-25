@@ -1,6 +1,6 @@
 defmodule Balance.Models.Player do
   @moduledoc """
-  Entity that represents a player
+  Entidad que representa a un jugador
   """
 
   defstruct(
@@ -13,6 +13,8 @@ defmodule Balance.Models.Player do
     total: 0,
     team: ""
   )
+
+  @type t :: __MODULE__
 
   defimpl Counter do
     def sum(%Balance.Models.Player{team: team_player, goals: goals}, acc, team) do

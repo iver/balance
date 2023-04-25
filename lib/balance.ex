@@ -1,14 +1,14 @@
 defmodule Balance do
   @moduledoc """
-  Module responsible for calculating players' income at resuelve.
+  Módulo encargado de calcular el ingreso de los jugadores
 
-  # The Challengue
+  # EL RETO
 
   ## Problema
 
-  El sueldo de los jugadores del Resuelve FC se compone de dos partes **un sueldo fijo** y **un bono variable**, la suma de estas dos partes es el sueldo de un jugador. El bono variable se compone de dos partes **meta de goles individual** y **meta de goles por equipo** cada una tiene un peso de 50%.
+  El sueldo de los jugadores de un equipo Patito SA de CV se compone de dos partes **un sueldo fijo** y **un bono variable**, la suma de estas dos partes es el sueldo de un jugador. El bono variable se compone de dos partes **meta de goles individual** y **meta de goles por equipo** cada una tiene un peso de 50%.
 
-  Tu programa deberá hacer el cálculo del sueldo de los jugadores del Resuelve FC.
+  El programa deberá hacer el cálculo del sueldo de los jugadores del equipo.
 
   ### ¿Cómo se calculan los alcances de meta y bonos?
 
@@ -37,9 +37,9 @@ defmodule Balance do
   Luis tendría un alcance individual de 95% para un alcance total de 95.5%
   El suelo fijo de Luis es de 50,000.00 y su bono es de 10,000.00 por lo que su sueldo final será $59,550.00
 
-  ## La prueba
+  ## Entradas
 
-  Tu programa deberá recibir como input un JSON con esta estructura:
+  El programa deberá recibir como entrada un JSON con al siguiente estructura:
 
   ```json
   [
@@ -84,8 +84,9 @@ defmodule Balance do
   ]
   ```
 
+  ## Salidas
 
-  En la respuesta deberás llenar la llave `sueldo_completo` con el monto correcto de cada jugador.
+  En la respuesta se deberá añadir la llave `sueldo_completo` con el monto correcto de cada jugador.
 
   ```json
   [
@@ -102,14 +103,17 @@ defmodule Balance do
   ```
 
   ## Bonus
-  Además de calcular el sueldo de los jugadores del Resuelve FC, tu programa puede calcular el sueldo de los jugadores de otros equipos con distintos mínimos por nivel. Tu programa deberá recibir como input un solo JSON con el arreglo de equipos.
+
+  Además de calcular el sueldo de los jugadores del equipo, el programa puede calcular el sueldo de los jugadores de otros equipos con distintos mínimos por nivel. El programa deberá recibir como entrada un solo JSON con el arreglo de equipos.
 
   """
-  alias Balance.Models.Player
   require Logger
 
+  alias Balance.Models.Player
+  alias Balance.Salary
+
   @doc """
-  Read a file in json format and return a list of players
+  Lee un archivo en formato JSON y regresa una lista de jugadores
   """
   def read_file(filename) do
     with {:ok, body} <- File.read(filename),
@@ -121,12 +125,12 @@ defmodule Balance do
   end
 
   @doc """
-  Return a list of players with the total salary calculated
+  Regresa una lista de jugadores con el salario total calculado
   """
-  @spec disperse([%Player{}], Balance.Settings.t()) :: [%Player{}]
+  @spec disperse([Player.t()], Settings.t()) :: [Player.t()]
   def disperse(players, settings) do
     Enum.reduce(players, [], fn player, acc ->
-      player = Balance.Salary.calculate(players, player, settings)
+      player = Salary.calculate(players, player, settings)
       Logger.debug("Player: #{inspect(player)}")
       [player | acc]
     end)

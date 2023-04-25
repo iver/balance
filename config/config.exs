@@ -1,33 +1,33 @@
-# This file is responsible for configuring your application
-# and its dependencies with the aid of the Mix.Config module.
+# Este archivo es responsable de configurar la aplicación y
+# las dependencias con la ayuda del módulo `Mix.Config`.
 use Mix.Config
 
 config :balance,
   ecto_repos: [Balance.Repo]
 
-# This configuration is loaded before any dependency and is restricted
-# to this project. If another project depends on this project, this
-# file won't be loaded nor affect the parent project. For this reason,
-# if you want to provide default values for your application for
-# third-party users, it should be done in your "mix.exs" file.
+# Esta configuración se carga antes que cualquier dependencia y está restringida
+# a este proyecto. Si otro proyecto depende de este proyecto,
+# este archivo no se cargará ni afectará al proyecto principal. Por esta razón,
+# si desea proporcionar valores predeterminados para su aplicación para
+# usuarios de terceros, debe hacerse en su archivo "mix.exs".
 
-# You can configure your application as:
+# Se puede configurar la aplicación como:
 #
 #     config :balance, key: :value
 #
-# and access this configuration in your application as:
+# y acceder a esta configuración en la aplicación como:
 #
-#     Application.get_env(:balance, :key)
+#     Aplicación.get_env(:balance, :key)
 #
-# You can also configure a third-party app:
+# También se puede configurar una aplicación de terceros:
 #
 #     config :logger, level: :info
 #
 
-# It is also possible to import configuration files, relative to this
-# directory. For example, you can emulate configuration per environment
-# by uncommenting the line below and defining dev.exs, test.exs and such.
-# Configuration from the imported file will override the ones defined
-# here (which is why it is important to import them last).
+# También es posible importar archivos de configuración, relativos a este
+# directorio. Por ejemplo, se puede emular la configuración por entorno
+# descomentando la línea de abajo y definiendo dev.exs, test.exs y demás.
+# La configuración del archivo importado anulará las definidas
+# aquí (razón por la cual es importante importarlos al final).
 
 import_config "#{Mix.env()}.exs"

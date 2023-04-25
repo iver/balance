@@ -1,7 +1,14 @@
 defmodule Balance.Settings.Goal do
+  @moduledoc """
+  Representa la configuración de como debe clasificarse
+  la calificación de los jugadores en función del número de goles.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   alias Balance.Settings
+
+  @type t :: __MODULE__
 
   @levels ["A", "B", "C", "Cuauh"]
 
@@ -20,9 +27,9 @@ defmodule Balance.Settings.Goal do
   end
 
   @doc """
-  Validate a level is belongs to the allowed levels
+  Valida si un nivel pertenece a los niveles permitidos
 
-  ## Examples
+  ## Ejemplos
 
   ```elixir
 

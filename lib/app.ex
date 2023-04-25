@@ -1,4 +1,10 @@
 defmodule App do
+  @moduledoc """
+  Contiene funciones que regresan información relacionada a la aplicación
+  """
+
+  alias Balance.Settings
+
   def run({:version, true}) do
     v =
       case File.read("assets/version") do
@@ -7,14 +13,14 @@ defmodule App do
           hd(list)
 
         {:error, _reason} ->
-          "0.0.1"
+          Application.spec(:balance)[:vsn]
       end
 
-    IO.puts("Balance version: #{v}")
+    print("Balance version: #{v}")
   end
 
   def run({:file, filename}) do
-    settings = Balance.Settings.load()
+    settings = Settings.load()
 
     filename
     |> Balance.read_file()
@@ -22,12 +28,12 @@ defmodule App do
     |> Balance.encode_players()
     |> Balance.save()
     |> Balance.normalize()
-    |> IO.puts()
+    |> print()
   end
 
   def run({:text, data}) do
-    IO.puts("\nResult: \n\t")
-    settings = Balance.Settings.load()
+    print("\nResult: \n\t")
+    settings = Settings.load()
 
     case Team.extract(data) do
       {:ok, players} ->
@@ -35,7 +41,7 @@ defmodule App do
         |> Balance.disperse(settings)
         |> Balance.encode_players()
         |> Balance.normalize()
-        |> IO.puts()
+        |> print()
 
       :error ->
         {:error, "The text couldn't parse"}
@@ -43,14 +49,18 @@ defmodule App do
   end
 
   def run({:bonus, data}) do
-    IO.puts("\nSaving bonus settings:\n")
+    print("\nSaving bonus settings:\n")
 
     data
     |> Bonus.update_settings()
-    |> IO.puts()
+    |> print()
   end
 
   def run({:help, true}) do
-    Balance.Help.use()
+    Balance.Help.show()
+  end
+
+  defp print(message) do
+    IO.puts(message)
   end
 end

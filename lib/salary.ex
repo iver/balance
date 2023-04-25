@@ -1,10 +1,15 @@
 defmodule Balance.Salary do
-  require Logger
-  @doc """
-  Returns bonus tupe as %{individual: bonus, team: bonus} calculated depends on the player
-  definition and current settings
+  @moduledoc """
+  Contiene las funciones relacionadas al cálculo del salario.
   """
-  @spec bonus(%Balance.Models.Player{}, %Balance.Settings.Goal{}) :: %{}
+
+  require Logger
+
+  alias Balance.Models.Player
+  alias Balance.Salary
+  alias Balance.Settings.Goal
+
+  @spec bonus(Player.t(), Balance.t()) :: map()
   def bonus(player, goal_settings) do
     # settings %{percent: %{individual: individual, team: team}}
     percent = Bonus.percentage(goal_settings)
@@ -13,7 +18,7 @@ defmodule Balance.Salary do
   end
 
   def calculate(players, player, %{goals: goal_settings, bonus: bonus_settings}) do
-    amount = Balance.Salary.bonus(player, bonus_settings)
+    amount = Salary.bonus(player, bonus_settings)
     individual = Goal.percentage(player, goal_settings)
     team_percent = Goal.percentage(players, goal_settings, player.team)
     bonus = total_bonus(%{percent: Enum.into(individual, team_percent)}, amount)
@@ -32,7 +37,7 @@ defmodule Balance.Salary do
 
   def normalize(fixed, bonus) do
     salary = fixed + bonus
-    :erlang.float_to_binary(salary,  [decimals: 2])
+    :erlang.float_to_binary(salary, decimals: 2)
   end
 
   defp limit(bonus, amount) do

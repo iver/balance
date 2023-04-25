@@ -1,6 +1,7 @@
 defmodule Screen do
   @moduledoc """
-  Screen module has the responsability to show options and define actions for each one
+  Tiene la responsabilidad de mostrar las opciones disponibles
+  y redireccionar las acciones a realizar por cada una.
   """
 
   require Logger
@@ -9,7 +10,7 @@ defmodule Screen do
     args
     |> parse_args()
     |> process()
-    |> IO.puts()
+    |> info()
   end
 
   defp parse_args(args) do
@@ -21,15 +22,23 @@ defmodule Screen do
 
   defp process({switches, args, invalid}) do
     if is_nil(invalid) == false && length(invalid) > 0 do
-      # TODO: Use args and invalid data if required
-      Logger.info("Ivalid args: #{inspect(invalid)} -> args: #{inspect(args)}")
+      # @TODO: Use args and invalid data if required
+      info("Ivalid args: #{inspect(invalid)} -> args: #{inspect(args)}")
     end
 
     Enum.each(switches, fn switch -> App.run(switch) end)
 
     if Enum.empty?(switches) do
-      IO.puts("balance: Ilegal option.\n")
-      Balance.Help.use()
+      error("balance: Ilegal option.\n")
+      Balance.Help.show()
     end
+  end
+
+  defp info(data) do
+    IO.puts(data)
+  end
+
+  defp error(data) do
+    IO.warn(data)
   end
 end

@@ -1,9 +1,11 @@
 defmodule Balance.Settings.Bonus do
   @moduledoc """
-  Bonus module is used to save into repository and validate any worng data
+  Representa la configuración de la bonificación, aquí se validan los poncentajes y tipos.
   """
   use Ecto.Schema
   import Ecto.Changeset
+
+  @type t :: __MODULE__
 
   @kinds ["team", "individual"]
 
@@ -21,9 +23,9 @@ defmodule Balance.Settings.Bonus do
   end
 
   @doc """
-  Validate when a bonus kind belongs to the allowed types
+  Valida cuando una bonificación pertenece a un tipo permitido.
 
-  ## Examples
+  ## Ejemplos
 
   ```elixir
 

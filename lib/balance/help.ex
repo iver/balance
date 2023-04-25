@@ -1,48 +1,72 @@
 defmodule Balance.Help do
   @moduledoc """
-  Expose information to the user.
-  Print on the screen how can we use the cli.
+  Muestra la información al usuario.
+  Imprime en pantalla como puede usarse el programa en la línea de comandos.
   """
 
-  def use do
-    IO.puts("NAME")
-    IO.puts("\t Balance -- Resuelve balance command line interface\n")
-    IO.puts("SYNOPSIS")
-    IO.puts("\t balance [--file(default)] <file to parse>\n")
-    author()
-    description()
-    file()
-    text()
-    help()
-    version()
+  def show do
+    """
+    NOMBRE
+    \t Balance -- CLI para el cálculo de salarios\n
+    SINOPSIS
+    \t balance [--file(default)] <archivo-a-analizar>\n
+    """
+    |> author()
+    |> description()
+    |> file()
+    |> text()
+    |> help()
+    |> version()
+    |> info()
   end
 
-  defp description do
-    IO.puts("DESCRIPTION")
-    IO.puts("\t Calculate Resuelve FC players' salary.\n
-    ")
-    IO.puts("OPTIONS")
+  defp author(data) do
+    """
+    #{data}
+    AUTHOR
+    \t Iván Jaimes
+    \t ivan@iver.mx\n
+    """
   end
 
-  defp file do
-    IO.puts("\t -f | --file <file_json> \t\tParse json file named <file_json>.")
+  defp description(data) do
+    """
+    #{data}
+    DESCRIPCION
+    \t Realiza el cálculo de salarios del problema planteado en el archivo README.md.\n
+    OPCIONES
+    """
   end
 
-  defp text do
-    IO.puts("\t -t | --text <text_json> \t\tParse json text.")
+  defp file(data) do
+    """
+    #{data}
+    \t -f | --file <file_json> \tParse json file named <file_json>.
+    """
   end
 
-  defp help do
-    IO.puts("\t -h | --help \t\tShows the help.")
+  defp text(data) do
+    """
+    #{data}
+    \t -t | --text <text_json> \tParse json text.
+    """
   end
 
-  defp version do
-    IO.puts("\t -v | --version \tShows the gcli version.")
+  defp help(data) do
+    """
+    #{data}
+    \t -h | --help \t\t\tShows the help.
+    """
   end
 
-  defp author do
-    IO.puts("AUTHOR")
-    IO.puts("\t Iván Jaimes")
-    IO.puts("\t ivan@iver.mx\n")
+  defp version(data) do
+    """
+    #{data}
+    \t -v | --version \t\tShows the gcli version.
+    """
+  end
+
+  defp info(data) do
+    IO.puts(data)
   end
 end

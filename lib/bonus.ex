@@ -1,8 +1,14 @@
 defmodule Bonus do
-  @doc """
-  Returns the bonus settings defined for team use
+  @moduledoc """
+  Contiene funciones relacionadas al cálculo de bonificaciones.
+  """
 
-  ## Example
+  alias Balance.Settings.Bonus
+
+  @doc """
+  Devuelve la configuración de bonificación definida para uso del equipo
+
+  ## Ejemplo
 
   ```elixir
 
@@ -13,7 +19,7 @@ defmodule Bonus do
   ```
 
   """
-  @spec percentage([%Balance.Settings.Bonus{}]) :: %{}
+  @spec percentage([Bonus.t()]) :: %{}
   def percentage(bonus_settings) do
     team = Enum.find(bonus_settings, fn bonus -> bonus.kind == "team" end)
     individual = Enum.find(bonus_settings, fn bonus -> bonus.kind == "individual" end)
@@ -21,9 +27,9 @@ defmodule Bonus do
   end
 
   @doc """
-  Calculate individual and team amount of bonus.
+  Calcula la bonificación individual y por equipo.
 
-  ## Example
+  ## Ejemplo
 
    ```elixir
 

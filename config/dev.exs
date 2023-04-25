@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :balance, Balance.Repo,
   adapter: Ecto.Adapters.Postgres,
@@ -11,7 +11,7 @@ config :balance, Balance.Repo,
 # Our Logger general configuration
 config :logger,
   backends: [:console],
-  compile_time_purge_level: :debug
+  level: :debug
 
 # Our Console Backend-specific configuration
 config :logger, :console,

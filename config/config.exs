@@ -1,6 +1,6 @@
 # Este archivo es responsable de configurar la aplicación y
 # las dependencias con la ayuda del módulo `Mix.Config`.
-use Mix.Config
+import Config
 
 config :balance,
   ecto_repos: [Balance.Repo]

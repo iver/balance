@@ -36,8 +36,43 @@ defmodule Balance.Settings do
   """
   @spec load() :: Settings.t()
   def load do
-    goals = Repo.list_goals_settings()
-    bonus = Repo.list_bonus_settings()
+    goals = list_goals()
+    bonus = list_bonus()
     %Settings{goals: goals, bonus: bonus}
+  end
+
+  @doc """
+  Obtiene una lista de `Balance.Settings.Goal`
+
+  ## Ejemplo:
+
+  ```elixir
+
+  > Balance.Settings.list_goals()
+  [%Balance.Settings.Goal{}]
+
+  ```
+
+  """
+  def list_goals do
+    Repo.all(Settings.Goal)
+  end
+
+  @doc """
+  Obtiene una lista de configuraciones de los bonos.
+  `[Balance.Settings.Bonus]`
+
+  ## Ejemplo:
+
+  ```elixir
+
+  > Balance.Settings.list_bonus()
+  [%Balance.Settings.Bonus{}]
+
+  ```
+
+  """
+  def list_bonus do
+    Repo.all(Settings.Bonus)
   end
 end

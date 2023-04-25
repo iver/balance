@@ -10,24 +10,6 @@ defmodule Balance.Repo do
   alias Balance.Settings
 
   @doc """
-  Obtiene una lista de configuraciones de los bonos.
-  `[Balance.Settings.Bonus]`
-
-  ## Ejemplo:
-
-   ```elixir
-
-     iex> Balance.Repo.list_bonus_settings()
-     [%Balance.Settings.Bonus{}]
-
-  ```
-
-  """
-  def list_bonus_settings do
-    Repo.all(Settings.Bonus)
-  end
-
-  @doc """
   Crea un `Balance.Settings.Bonus`.
 
   ## Ejemplos:
@@ -93,23 +75,6 @@ defmodule Balance.Repo do
   """
   def delete_bonus(%Settings.Bonus{} = bonus) do
     Repo.delete(bonus)
-  end
-
-  @doc """
-  Obtiene una lista de `Balance.Settings.Goal`
-
-  ## Ejemplo:
-
-  ```elixir
-
-  iex> Balance.Repo.list_goals_settings()
-  [%Balance.Settings.Goal{}]
-
-  ```
-
-  """
-  def list_goals_settings do
-    Repo.all(Settings.Goal)
   end
 
   @doc """

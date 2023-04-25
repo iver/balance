@@ -1,10 +1,13 @@
 defmodule Team do
   @moduledoc """
-  Encapsulates the tasks to be performed per team.
+  Encapsula las tareas a realizar que están relacionadas con un equipo.
   """
 
   @doc """
-  Convert a json string to player list as `[%Balance.Models.Player{}]`
+  Convierte una cadena de jugadores en formato JSON
+  a una lista de tipo `[%Balance.Models.Player{}]`.
+
+  También convierte una lista de valores a una de [%Player{}]
 
   """
   def extract(data) when is_bitstring(data) do
@@ -16,10 +19,6 @@ defmodule Team do
     end
   end
 
-  @doc """
-  Convert a decoded list to player list as [%Player{}]
-
-  """
   def extract(players) do
     result =
       Enum.reduce(players, [], fn player, list ->

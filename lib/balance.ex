@@ -137,7 +137,7 @@ defmodule Balance do
   end
 
   @doc """
-  Prepare players to export as string
+  Prepara la lista de los jugadores para exportar como cadena.
 
   """
   def encode_players(players) do
@@ -152,29 +152,22 @@ defmodule Balance do
   end
 
   @doc """
-  Save the data into players.json file
+  Guarda la información de los jugadores en un archivo llamado players.json
   """
+  @spec save({:ok, map()} | any()) :: :ok | {:error, File.posix()} | any()
   def save({:ok, players}) do
     File.write("players.json", players, [:binary])
   end
 
-  @doc """
-  Save any data for diagnostic purpose.
-  """
   def save(data) do
     Logger.debug("Save any data -> #{inspect(data)}")
     data
   end
 
   @doc """
-  Extract result and define if there is an error
-  """
-  def normalize({:ok, players}), do: players
+  Extrae el resultado y define si existe un error:
 
-  @doc """
-  Extract tuple error value from a tuple like {:error, value}
-
-  ## Example
+  ## Ejemplo:
 
   ```elixir
 
@@ -183,24 +176,14 @@ defmodule Balance do
   "Error value"
 
   ```
-
   """
+  def normalize({:ok, players}), do: players
+
   def normalize({:error, error_info}) do
     Logger.debug("#{inspect(error_info)}")
     error_info
   end
 
-  @doc """
-  Default function when `data` parameter is not a tuple
-
-  ```elixir
-
-  iex> Balance.normalize("")
-  ""
-
-  ```
-
-  """
   def normalize(data) do
     Logger.debug("#{inspect(data)}")
     data

@@ -1,10 +1,11 @@
 defprotocol Counter do
   @doc """
-  Returns the total sum as integer using the String.t() as parameter
+  Protocolo que contiene la función a implementar para poder extraer
+  la sumatoría de los miembros de un mapa.
   """
 
   @type t :: __MODULE__
 
-  @spec sum(%{}, number, String.t()) :: number
+  @spec sum(map(), number(), String.t()) :: number()
   def sum(struct, acc, team)
 end

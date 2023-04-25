@@ -1,12 +1,13 @@
 defmodule Json.Parser do
   @moduledoc """
-  Allows to parse bonus json to struct easily
+  Contiene funciones que encapsulan el uso de Poison
+  para analizar una structura y convertir a JSON y viceversa.
   """
 
   @doc """
-  Decode json string
+  Obtiene una estructura a partir de una cadena JSON
 
-  ## Example
+  ## Ejemplo:
 
   ```elixir
 
@@ -31,9 +32,10 @@ defmodule Json.Parser do
   end
 
   @doc """
-  Decode JSON to a value, raises an exception on error.
+  Convierte un JSON a una estructura, en caso de error
+  lanzará una excepción.
 
-  ## Example
+  ## Ejemplo:
 
   ```elixir
 
@@ -56,9 +58,9 @@ defmodule Json.Parser do
   end
 
   @doc """
-  Encode a value to JSON, raises an exception on error.
+  Genera un JSON a partir del parámetro recibido.
 
-  ## Example
+  ## Ejemplo:
 
   ```elixir
 

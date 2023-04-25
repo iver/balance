@@ -1,6 +1,6 @@
 defmodule Balance.Repo do
   @moduledoc """
-  Allows access to storage repository
+  Brinda acceso al repositorio de almacenamiento
   """
   use Ecto.Repo,
     otp_app: :balance,
@@ -10,9 +10,10 @@ defmodule Balance.Repo do
   alias Balance.Settings
 
   @doc """
-  Returns the list of settings of bonus.
+  Obtiene una lista de configuraciones de los bonos.
+  `[Balance.Settings.Bonus]`
 
-  ## Example
+  ## Ejemplo:
 
    ```elixir
 
@@ -27,9 +28,9 @@ defmodule Balance.Repo do
   end
 
   @doc """
-  Creates a Balance.Settings.Bonus.
+  Crea un `Balance.Settings.Bonus`.
 
-  ## Examples
+  ## Ejemplos:
 
   ```elixir
 
@@ -49,9 +50,9 @@ defmodule Balance.Repo do
   end
 
   @doc """
-  Updates a Settings.Bonus.
+  Actualiza un `Balance.Settings.Bonus`
 
-  ## Examples
+  ## Ejemplos:
 
   ```elixir
 
@@ -73,9 +74,9 @@ defmodule Balance.Repo do
   end
 
   @doc """
-  Deletes a Bonus setting.
+  Borra un `Balance.Settings.Bonus`
 
-  ## Examples
+  ## Ejemplos:
 
   ```elixir
 
@@ -95,9 +96,9 @@ defmodule Balance.Repo do
   end
 
   @doc """
-  Returns the list of goals settings.
+  Obtiene una lista de `Balance.Settings.Goal`
 
-  ## Example
+  ## Ejemplo:
 
   ```elixir
 
@@ -112,9 +113,9 @@ defmodule Balance.Repo do
   end
 
   @doc """
-  Creates a Balance.Settings.Goal.
+  Crea un `Balance.Settings.Goal`.
 
-  ## Examples
+  ## Ejemplo:
 
   ```elixir
 
@@ -134,9 +135,9 @@ defmodule Balance.Repo do
   end
 
   @doc """
-  Updates a Balance.Settings.Goal.
+  Actualiza un `Balance.Settings.Goal`.
 
-  ## Examples
+  ## Ejemplos:
 
   ```elixir
 
@@ -158,9 +159,9 @@ defmodule Balance.Repo do
   end
 
   @doc """
-  Deletes a Goal.
+  Borra un `Balance.Settings.Goal`
 
-  ## Examples
+  ## Ejemplos:
 
   ```elixir
 

@@ -1,6 +1,6 @@
 defmodule App do
   @moduledoc """
-  Contiene funciones que regresan información relacionada a la aplicación
+  Contiene funciones que regresan información relacionada a la aplicación.
   """
 
   alias Balance.Settings

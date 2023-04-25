@@ -1,4 +1,4 @@
-defmodule Json.Parser do
+defmodule Balance.Parser do
   @moduledoc """
   Contiene funciones que encapsulan el uso de Poison
   para analizar una structura y convertir a JSON y viceversa.
@@ -12,7 +12,7 @@ defmodule Json.Parser do
   ```elixir
 
   iex> data = ~s({"nombre":"Juan Perez", "nivel":"C", "goles":10, "sueldo":50000, "bono":25000, "sueldo_completo":null, "equipo":"rojo"})
-  iex> Json.Parser.decode(data)
+  iex> Balance.Parser.decode(data)
   {:ok,
   %{
   "bono" => 25000,
@@ -39,7 +39,7 @@ defmodule Json.Parser do
 
   ```elixir
 
-     iex> Json.Parser.decode!(~s({"percent": 0.5, "kind": "individual"}), %Balance.Settings.Bonus{})
+     iex> Balance.Parser.decode!(~s({"percent": 0.5, "kind": "individual"}), %Balance.Settings.Bonus{})
      %Balance.Settings.Bonus{
      id: nil,
      kind: \"individual\",
@@ -66,7 +66,7 @@ defmodule Json.Parser do
 
   iex> expected = ~s([{"percent":0.5,"kind":"team"},{"percent":0.5,"kind":"individual"}])
   iex> bonus = [%Balance.Settings.Bonus{kind: "team", percent: 0.5},%Balance.Settings.Bonus{kind: "individual",percent: 0.5}]
-  iex> {:ok, result} = Json.Parser.encode(bonus)
+  iex> {:ok, result} = Balance.Parser.encode(bonus)
   iex> expected == result
   true
 

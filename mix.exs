@@ -4,7 +4,7 @@ defmodule Balance.MixProject do
   def project do
     [
       app: :balance,
-      version: "0.0.1",
+      version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       description: description(),
@@ -33,11 +33,11 @@ defmodule Balance.MixProject do
     ]
   end
 
-  def escript() do
+  def escript do
     [main_module: Screen]
   end
 
-  def description() do
+  def description do
     """
     Library for solve test backend role
     """
@@ -71,11 +71,9 @@ defmodule Balance.MixProject do
       {:ex_doc, "~> 0.20.1", runtime: false},
       {:ex_doc_makeup, "~> 0.1.0"},
       {:poison, "~> 4.0"},
-      {:credo, "~> 1.0.5", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.11", only: :test},
-      {:dialyxir, "~> 1.0.0-rc.6", only: [:dev], runtime: false}
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:dialyxir, "~> 1.3", only: [:dev], runtime: false}
     ]
   end
 

@@ -2,11 +2,12 @@ defmodule Json.ParserTest do
   use ExUnit.Case
   doctest Json.Parser
 
-  describe "Json Bonus" do
+  alias Balance.Settings.Bonus
+  alias Balance.Settings.Goal
+
+  describe "decode!/2" do
     @bonus_json ~s({"percent":0.5,"kind":"individual"})
     @goal_json ~s({\"level\": \"C\", \"goals\": 15, \"team\": \"all\"})
-    alias Balance.Settings.Bonus
-    alias Balance.Settings.Goal
 
     test "Decode valid json to Bonus data type" do
       setting = Json.Parser.decode!(@bonus_json, %Bonus{})
@@ -27,13 +28,9 @@ defmodule Json.ParserTest do
       {:error, result} = Json.Parser.decode!(@bonus_json, %{percent: 20, kind: "individual"})
       assert "Decode for value type is not implemented" = result
     end
+  end
 
-    test "Encode valid struct" do
-      bonus = %Bonus{percent: 0.5, kind: "individual"}
-      {:ok, json} = Json.Parser.encode(bonus)
-      assert @bonus_json == json
-    end
-
+  describe "decode/1" do
     @tag :latest
     test "Json decode as map" do
       json_string =
@@ -52,6 +49,14 @@ defmodule Json.ParserTest do
       }
 
       assert result == expected
+    end
+  end
+
+  describe "encode/1" do
+    test "Encode valid struct" do
+      bonus = %Bonus{percent: 0.5, kind: "individual"}
+      {:ok, json} = Json.Parser.encode(bonus)
+      assert @bonus_json == json
     end
   end
 end

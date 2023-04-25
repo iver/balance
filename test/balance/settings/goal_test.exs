@@ -46,6 +46,9 @@ defmodule Balance.Settings.GoalTest do
       goal2up = Goal.changeset(goal2, @update_attrs)
       assert goal2up.valid? == true
       assert {:ok, result} = Balance.Repo.update(goal2up)
+      assert @update_attrs[:level] == result.level
+      assert @update_attrs[:goals] == result.goals
+      assert @update_attrs[:team] == result.team
     end
   end
 end

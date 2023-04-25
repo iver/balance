@@ -55,9 +55,11 @@ defmodule Bonus do
 
     case Json.Parser.decode(settings) do
       {:ok, list} ->
-        Enum.each(list, fn item ->
-          Logger.info("Data: #{inspect(item)} \n")
-        end)
+        # Enum.each(list, fn item ->
+        #   Logger.info("Data: #{inspect(item)} \n")
+        # end)
+
+        list
 
       # case Balance.Repo.create_bonus(bonus) do
       #   {:ok, bonus} -> bonus

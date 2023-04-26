@@ -15,5 +15,5 @@ config :logger,
 
 # Our Console Backend-specific configuration
 config :logger, :console,
-  format: "\n##### $time $metadata[$level] $levelpad$message\n",
+  format: "\n##### $time $metadata[$level] $message\n",
   metadata: :all

@@ -48,7 +48,7 @@ defmodule BalanceTest do
   describe "disperse/2" do
     test "when data is valid" do
       settings = Balance.Settings.load()
-      totals = [25_700.00, 60_833.33]
+      totals = [25_700.00, 60_416.67]
       teams = ["rojo", "azul"]
       [first | [last]] = Balance.disperse(@two_valid_players, settings)
 

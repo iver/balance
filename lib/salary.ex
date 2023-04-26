@@ -37,7 +37,8 @@ defmodule Balance.Salary do
 
   def normalize(fixed, bonus) do
     salary = fixed + bonus
-    :erlang.float_to_binary(salary, decimals: 2)
+    Float.round(salary, 2)
+    # :erlang.float_to_binary(salary, decimals: 2)
   end
 
   defp limit(bonus, amount) do

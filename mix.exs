@@ -92,7 +92,7 @@ defmodule Balance.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       "ecto.reset.test": ["ecto.drop", "ecto.create", "ecto.migrate"],
-      test: ["ecto.reset.test --quiet", "ecto.migrate", "test"]
+      test: ["ecto.reset.test --quiet", "ecto.migrate", "run priv/repo/seeds.exs", "test"]
     ]
   end
 end

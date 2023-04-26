@@ -144,4 +144,16 @@ defmodule Balance.Repo do
   def delete_goal(%Settings.Goal{} = goal) do
     Repo.delete(goal)
   end
+
+  if Mix.env() in [:dev, :test] do
+    @spec truncate(Ecto.Schema.t()) :: {:ok, String.t()} | {:error, String.t()}
+    def truncate(schema) do
+      table_name = schema.__schema__(:source)
+
+      case query("TRUNCATE #{table_name}", []) do
+        {:ok, result} -> {:ok, "Command executed #{result.command}"}
+        {:error, result} -> {:error, "Command #{result.message}"}
+      end
+    end
+  end
 end

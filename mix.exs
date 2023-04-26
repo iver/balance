@@ -72,11 +72,11 @@ defmodule Balance.MixProject do
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:excoveralls, "~> 0.11", only: :test},
       {:makeup, "~> 1.1.0"},
-      {:makeup_elixir, "~> 0.14.0"},
+      {:makeup_elixir, "~> 0.16"},
 
       # used in production
       {:ecto_sql, "~> 3.0"},
-      {:poison, "~> 4.0"},
+      {:poison, "~> 5.0"},
       {:postgrex, "~> 0.14"}
     ]
   end
